@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Toto 💕 Our Eternal Story</title>
+    <!-- LOGIN CHECK SCRIPT - MUST BE EARLY -->
+    <script>
+        if (sessionStorage.getItem('isLoveLoggedIn') !== 'true') {
+            window.location.href = 'login.html'; // Redirect to login if not logged in
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white; /* Default text color */
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem; 
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+        }
+
+        .together-counter {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .counter-intro {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+        .counter-display {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            flex-wrap: wrap;
+            gap: 0.5em 1em;
+        }
+        .counter-display div {
+            text-align: center;
+            min-width: 70px;
+        }
+        .counter-display span.value {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem; 
+            font-weight: 700;
+            display: block; 
+            line-height: 1.1;
+        }
+        .counter-display span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem; 
+            font-weight: 400;
+            opacity: 0.8;
+            display: block; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2em; 
+        }
+        .counter-romantic-text {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        .date-display {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem 2rem;
+            margin-bottom: 2.5rem; 
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            width: fit-content; 
+        }
+        
+        .today-date {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .fortune-container {
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            margin-bottom: 3rem; 
+        }
+        
+        .fortune-cookie {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #f4d03f, #f7dc6f);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid #f1c40f;
+        }
+        .fortune-cookie:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .fortune-cookie.shaking { animation: shake 0.8s ease-in-out; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px) rotate(-2deg); }
+            20%, 40%, 60%, 80% { transform: translateX(10px) rotate(2deg); }
+        }
+        .cookie-crack {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px; height: 0;
+            background: #d35400;
+            border-radius: 1px;
+            transition: height 0.5s ease;
+        }
+        .fortune-cookie.cracked .cookie-crack { height: 80px; }
+        .instruction {
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        .romantic-section {
+            width: 100%;
+            max-width: 700px; 
+            margin: 0 auto 3rem auto; 
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .milestones-container {
+            overflow-x: auto;
+            display: flex;
+            gap: 1.5rem;
+            padding-bottom: 1rem; 
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.3) transparent;
+        }
+        .milestones-container::-webkit-scrollbar { height: 6px; }
+        .milestones-container::-webkit-scrollbar-track { background: transparent; }
+        .milestones-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+        
+        .milestone-card {
+            min-width: 220px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .milestone-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .milestone-icon { font-size: 2rem; margin-bottom: 0.5rem; color: #f8cdda; } 
+        .milestone-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .milestone-date { font-size: 0.8rem; opacity: 0.7; margin-bottom: 0.5rem; }
+        .milestone-desc { font-size: 0.9rem; opacity: 0.8; line-height: 1.4; }
+
+        .reasons-carousel {
+            position: relative;
+            height: 120px; 
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .reason-slide {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            padding: 1rem;
+        }
+        .reason-slide.active { opacity: 1; }
+        .reason-text {
+            font-family: 'Parisienne', cursive; 
+            font-size: 1.8rem; 
+            line-height: 1.4;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .reason-icon { font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffaddd; }
+
+        .promise-section { text-align: center; }
+        .promise-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .promise-content:hover { background: rgba(255, 255, 255, 0.1); }
+        .promise-instruction { font-size: 1rem; opacity: 0.8; margin-bottom: 1rem; }
+        .promise-text-hidden {
+            display: none;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #fde7f1; 
+            line-height: 1.6;
+            margin-top: 1rem;
+            animation: fadeInText 1s ease-out;
+        }
+        @keyframes fadeInText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .promise-revealed .promise-instruction { display: none; }
+        .promise-revealed .promise-text-hidden { display: block; }
+        .promise-seal {
+            font-size: 2.5rem;
+            color: #ff8fab; 
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            transition: transform 0.5s ease;
+        }
+        .promise-revealed .promise-seal { transform: rotate(720deg) scale(0.8); opacity: 0.5; }
+
+
+        .message-container {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        .message-container.show { opacity: 1; visibility: visible; }
+        .message-box {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            border-radius: 25px; padding: 3rem;
+            max-width: 500px; width: 90%;
+            text-align: center; position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.5s ease;
+        }
+        .message-container.show .message-box { transform: scale(1) translateY(0); }
+        .close-btn {
+            position: absolute; top: 15px; right: 20px;
+            background: none; border: none;
+            font-size: 2rem; color: rgba(0,0,0,0.6);
+            cursor: pointer; transition: color 0.3s ease;
+        }
+        .close-btn:hover { color: rgba(0,0,0,0.8); }
+        /* .message-content class from previous was specific to inside .message-box, so changed id in js to messageContentContainer */
+        /* No need to style #messageContentContainer directly if its child .message-content is styled */
+        .message-box .message-content { color: #2c3e50; } /* Target specifically */
+
+        .message-type {
+            font-size: 0.9rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: rgba(0,0,0,0.6); margin-bottom: 1rem;
+        }
+        .message-text {
+            font-size: 1.3rem; line-height: 1.6;
+            margin-bottom: 1.5rem; font-weight: 400;
+        }
+        .memory .message-text { font-style: italic; }
+        .affirmation .message-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem; font-weight: 600;
+        }
+        .message-date { font-size: 0.9rem; color: rgba(0,0,0,0.5); margin-top: 1rem; }
+        
+        /* MEDIA PLAYER STYLES - Reverted to original intent */
+        .media-player {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem; /* This was in the original good version */
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 400px; /* This was in the original good version */
+            width: 100%; /* Ensure it takes available width up to max-width */
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .media-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .media-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .media-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .tab-btn.active {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.05);
+        }
+        
+        /* This div will contain the scrollable list */
+        .media-content-list-wrapper { 
+             min-height: 150px; /* Original min-height for visual consistency */
+             max-height: 200px; /* Allow it to grow a bit but still scroll */
+             overflow-y: auto;
+             scrollbar-width: thin;
+             scrollbar-color: rgba(255,255,255,0.3) transparent;
+             margin-top: 1rem; /* Space above the list */
+        }
+
+        .media-content-list-wrapper::-webkit-scrollbar { width: 4px; }
+        .media-content-list-wrapper::-webkit-scrollbar-track { background: transparent; }
+        .media-content-list-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+        
+        .media-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin: 0.5rem 0.2rem; /* Added small horizontal margin */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .media-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        
+        .media-item.playing {
+            background: rgba(255,182,193,0.3); /* Light pinkish */
+            border-color: rgba(255,182,193,0.5);
+        }
+        
+        .media-name {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        
+        .media-description {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+        }
+        
+        /* This div shows the currently playing media (audio, image, video) */
+        .current-media-display { 
+            text-align: center;
+            padding: 1rem 0; /* Adjusted padding */
+            background: rgba(255,255,255,0.05); /* Slightly different from list item for distinction */
+            border-radius: 15px;
+            margin-bottom: 1rem; /* Space below the player before list */
+            min-height: 50px; /* Ensure it has some height even when empty */
+        }
+        
+        .current-media-display img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin-top: 0.5rem;
+        }
+        
+        .current-media-display audio,
+        .current-media-display video {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+        
+        .playing-title {
+            color: white;
+            font-size: 1.1rem; /* Slightly larger */
+            margin-bottom: 0.5rem; /* Space below title */
+            font-family: 'Dancing Script', cursive;
+        }
+        /* END MEDIA PLAYER STYLES */
+        
+        .hearts { position: absolute; pointer-events: none; }
+        .heart {
+            position: absolute; color: #ff6b6b;
+            font-size: 1.5rem; animation: floatUp 3s ease-out infinite;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .already-opened {
+            text-align: center; background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px); border-radius: 20px;
+            padding: 2rem; border: 1px solid rgba(255,255,255,0.2); color: white;
+        }
+        .opened-message { font-size: 1.1rem; margin-bottom: 1rem; }
+        .comeback-text { font-size: 0.9rem; opacity: 0.8; }
+        
+        .sparkle {
+            position: fixed;
+            width: 6px; height: 6px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none; opacity: 0;
+            transform: translate(-50%, -50%);
+            animation: sparkle-fade 0.6s ease-out forwards; 
+            z-index: 9999; 
+        }
+        @keyframes sparkle-fade {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            .fortune-cookie { width: 150px; height: 150px; }
+            .message-box { padding: 2rem; }
+            .counter-display span.value { font-size: 1.8rem; }
+            .counter-display span.label { font-size: 0.6rem; }
+            .counter-intro, .counter-romantic-text { font-size: 0.9rem; }
+
+            .section-title { font-size: 1.8rem; }
+            .milestone-card { min-width: 180px; }
+            .reason-text { font-size: 1.5rem; }
+            .promise-text-hidden { font-size: 1.4rem; }
+            .media-player { max-width: 90%; } /* Ensure it's responsive */
+        }
+         @media (max-width: 480px) {
+            .title { font-size: 2.2rem; }
+            .counter-display { gap: 0.3em 0.5em; }
+            .counter-display div { min-width: 55px; }
+            .counter-display span.value { font-size: 1.6rem; }
+            .counter-display span.label { font-size: 0.5rem; }
+            .milestone-card { min-width: 160px; padding: 0.8rem; }
+            .milestone-icon { font-size: 1.8rem; }
+            .milestone-title { font-size: 1rem; }
+            .reason-text { font-size: 1.3rem; }
+            .promise-text-hidden { font-size: 1.2rem; }
+            .romantic-section { padding: 1rem; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Happy Birthday Toto ✨</h1>
+            <p class="subtitle">Our Eternal Story of Surprises 💕</p>
+
+            <div class="together-counter">
+                <p class="counter-intro">Our journey so far:</p>
+                <div class="counter-display">
+                    <div><span class="value" id="together-days">600</span> <span class="label">Days</span></div>
+                    <div><span class="value" id="together-hours">00</span> <span class="label">Hours</span></div>
+                    <div><span class="value" id="together-minutes">00</span> <span class="label">Minutes</span></div>
+                    <div><span class="value" id="together-seconds">00</span> <span class="label">Seconds</span></div>
+                </div>
+                <p class="counter-romantic-text">of endless fights and laughter ❤️</p>
+            </div>
+            
+            <!-- MEDIA PLAYER - Corrected Structure -->
+            <div class="media-player">
+                <div class="media-header">
+                    <h3 class="media-title">Our Love Playlist 💕</h3>
+                    <div class="media-tabs">
+                        <button class="tab-btn active" data-tab="songs">Songs</button>
+                        <button class="tab-btn" data-tab="photos">Photos</button>
+                        <button class="tab-btn" data-tab="videos">Videos</button>
+                    </div>
+                </div>
+                
+                <div class="current-media-display" id="currentMediaDisplay">
+                    <div style="color: white; opacity: 0.7;">Select something special from our list... 🎵</div>
+                </div>
+                
+                <div class="media-content-list-wrapper" id="mediaContentListWrapper">
+                    <!-- Media items will be populated here by JS -->
+                </div>
+            </div>
+            <!-- END MEDIA PLAYER -->
+        </div>
+
+        <div class="date-display">
+            <div class="today-date" id="currentDate"></div>
+        </div>
+
+        <section class="romantic-section" id="loveJourney">
+            <h2 class="section-title">Our Love Journey 💫</h2>
+            <div class="milestones-container" id="milestonesContainer"></div>
+        </section>
+
+        <section class="romantic-section" id="reasonsAdore">
+            <h2 class="section-title">Reasons I Adore You ✨</h2>
+            <div class="reasons-carousel" id="reasonsCarousel"></div>
+        </section>
+        
+        <section class="romantic-section promise-section" id="specialPromise">
+            <h2 class="section-title">A Special Promise 💌</h2>
+            <div class="promise-content" id="promiseContent">
+                <span class="promise-seal" id="promiseSeal">💖</span>
+                <p class="promise-instruction">Tap to reveal a promise sealed with love...</p>
+                <p class="promise-text-hidden" id="promiseText">
+                    My dearest, I promise to always cherish these moments, to find new ways to make you smile, and to love you more with each passing day. You are my everything.
+                </p>
+            </div>
+        </section>
+
+        <div class="fortune-container" id="fortuneContainer">
+            <div class="fortune-cookie" id="fortuneCookie">
+                <div class="cookie-crack"></div>
+            </div>
+            <p class="instruction">Click the cookie to reveal today's surprise! 🥠</p>
+        </div>
+    </div>
+
+    <div class="message-container" id="messageContainer">
+        <div class="message-box">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div id="messageContentContainer"> 
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <script>
+        const messages = {
+            affirmations: [ "You are the poetry my heart writes in silence, the song my soul hums in solitude ✨", "In a world of temporary things, you are a perpetual feeling of home 🏠", "Your existence alone makes the universe infinitely more beautiful 🌌", "You're not just in my heart, you've become the rhythm it beats to 💓", "Every constellation in the sky spells out reasons why I adore you ⭐", "You turn my ordinary days into extraordinary love stories 📖", "Your smile is the sunrise that awakens my soul each morning ☀️", "You're the answer to questions I didn't know my heart was asking 💭", "In your eyes, I see galaxies of possibility and forever 🌠", "You make me believe in magic because you are magic ✨", "Your laugh is the soundtrack to my happiest memories 🎵", "You're the missing piece that makes my puzzle heart complete 🧩", "With you, every season feels like spring - full of new beginnings 🌸", "You're not just my love, you're my favorite adventure 🗺️", "Your presence turns my house into a home, my days into dreams 🏡", "You're the bookmark in every chapter of my life story 📚", "Your love is the compass that guides me through life's journey 🧭", "You make my heart feel like it's learned a new language - yours 💝" ],
+            memories: [ "Remember when we got caught in that rainstorm and danced instead of running? Pure magic ⛈️💃", "The way you surprised me with breakfast in bed on that random Tuesday still makes me melt 🥞", "That evening we stargazed and you pointed out shapes in the clouds at sunset 🌅", "When you fell asleep reading and I watched you dream - you looked so peaceful 😴", "Our spontaneous midnight drive to nowhere that became everywhere together 🚗", "The time you wore my hoodie and claimed it smelled like 'home' - my heart exploded 👗", "That afternoon we built a blanket fort and pretended we were kids again 🏰", "When you sang off-key in the shower and I fell in love all over again 🚿🎤", "Remember our first slow dance in the kitchen to no music? Still my favorite song 💃", "The way you held my hand during that scary movie - my protector and comfort 🎬", "That picnic where we fed each other strawberries and laughed until our stomachs hurt 🍓", "When you surprised me at work just to bring me coffee and a smile ☕😊", "Our lazy Sunday morning when we didn't leave bed until 2 PM - perfect day 🛏️", "The time you tried to cook my favorite meal and burned it, but the effort was perfect 👨‍🍳", "That moment you cried at the sunset because it was 'too beautiful' - so are you 🌇", "When we got lost but found the most amazing little café - best wrong turn ever 🗺️☕" ],
+            jokes: [ "Urgent update: You're still terrible at pretending to be asleep when I catch you staring 😴👀", "Breaking: Local woman still steals all the blankets but somehow remains adorable 🛏️", "Weather report: It's raining cuteness wherever you go today ☔😊", "Daily reminder: Your bedhead defies physics but captures hearts 💫", "Alert: You owe me approximately 47 butterfly kisses from last week's tickle fight 🦋", "Fun fact: You make the most adorable concentration face when choosing Netflix shows 📺", "Emergency broadcast: Your singing voice in the car is Grammy-worthy (in my heart) 🏆🎵", "Important notice: You're not allowed to be this cute before I've had my morning coffee ☕😍", "Scientific discovery: Your hugs have healing properties stronger than any medicine 🤗💊", "Breaking news: You still can't reach the top shelf but you're perfect height for my heart 📏💕", "Daily observation: You eat pizza like it personally offended you - it's hilarious 🍕😂", "Reminder: You promised to teach me your secret pancake recipe three months ago... 🥞⏰", "Weather update: There's a 100% chance of me missing you when you're not here ☁️💭", "Alert: Your victory dance after winning board games is both terrible and amazing 🎲💃", "Fun fact: You've never met a puppy you didn't want to adopt immediately 🐶❤️", "Important memo: Your laugh is contagious and should come with a warning label 😂⚠️" ],
+            deepThoughts: [ "If I could write our love story in the stars, every constellation would pale in comparison ⭐📜", "You've taught my heart to speak a language it never knew existed - pure devotion 💬❤️", "In the library of my life, you're not just a chapter, you're the entire love story 📚💕", "You're the reason I believe in soulmates, destiny, and all those beautiful impossibilities ✨🔮", "With you, I've learned that home isn't a place - it's a person, and you're mine 🏠💝", "You make me want to be brave enough to love with my whole heart, no reservations 💪❤️", "Every day with you feels like I'm living in a love song I never want to end 🎵♾️", "You've turned my black and white world into the most vibrant masterpiece 🎨🌈" ],
+            gratitude: [ "Thank you for seeing beauty in my chaos and finding perfection in my flaws 🌪️✨", "Grateful for the way you love me - wildly, completely, without hesitation 🙏💕", "Thank you for being my safe space in a world that often feels overwhelming 🛡️🤗", "I'm thankful for your patience with my quirks and your celebration of my dreams 🎭🌟" ]
+        };
+        const mediaLibrary = {
+            songs: [
+                { name: "Our Song", description: "Yes i decided this is our unique song ", url: "oursong.mp3", type: "audio" },
+                { name: "Your Favourite Song", description: "Aziz Maraka - Meen Galk ", url: "mengalk.mp3", type: "audio" },
+                { name: "Song I Used To Listen In Our First Days", description: "Yeat - If We Being Real", url: "beingreal.mp3", type: "audio" },
+                { name: "No Caption Needed ", description: "YA BASAAANT - NEFSI A4OOFK", url: "basant.mp3", type: "audio" },
+                { name: "When we fight ", description: "Listen To It  - When you are angry of me", url: "bahaa.mp3", type: "audio" }
+            ],
+            photos: [
+                { name: "Our First Meet", description: "You looked stunning بالكروكس", url: "anastoto.png?w=400", type: "image" },
+                { name: "Toto 3abeta", description: "بطلي هبل بقي", url: "toto1.jpg?w=400", type: "image" },
+                { name: "Candid Laugh", description: "Your joy is contagious", url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400", type: "image" },
+                { name: "Silly Faces", description: "Never a dull moment!", url: "https://images.unsplash.com/photo-1500336624523-d727130c3328?w=400", type: "image" },
+                { name: "Holiday Together", description: "Memories from our trip", url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400", type: "image" }
+            ],
+            videos: [
+                { name: "Dancing in Kitchen", description: "Your silly moves make me smile", url: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4", type: "video" },
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('isLoveLoggedIn') !== 'true') {
+                window.location.href = 'login.html'; 
+                return; 
+            }
+
+            createStars();
+            updateDate();
+            initializeTogetherCounter(); 
+            setupEventListeners();
+            initializeMediaPlayer();
+            initializeRomanticUI();
+            
+            const today = new Date().toDateString();
+            const lastOpened = localStorage.getItem('lastOpenedDate');
+            
+            const fortuneContainer = document.getElementById('fortuneContainer');
+            if (fortuneContainer && lastOpened === today) {
+                showAlreadyOpened();
+            }
+        });
+
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            if (!starsContainer) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function updateDate() {
+            const currentDateEl = document.getElementById('currentDate');
+            if (!currentDateEl) return;
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            currentDateEl.textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        function initializeTogetherCounter() {
+            const daysElement = document.getElementById('together-days');
+            const hoursElement = document.getElementById('together-hours');
+            const minutesElement = document.getElementById('together-minutes');
+            const secondsElement = document.getElementById('together-seconds');
+
+            if (!daysElement || !hoursElement || !minutesElement || !secondsElement) { return; }
+
+            // Our fixed starting date: 29th May 2023, 5:00 PM
+            // JavaScript months are 0-indexed, so May is month 4.
+            const anniversaryStartDate = new Date(2023, 4, 29, 17, 0, 0); 
+
+            function updateTogetherCounter() {
+                const currentTime = new Date();
+                const diff = currentTime.getTime() - anniversaryStartDate.getTime();
+
+                if (diff < 0) { // If the anniversary date is in the future
+                    daysElement.textContent = "0";
+                    hoursElement.textContent = "00";
+                    minutesElement.textContent = "00";
+                    secondsElement.textContent = "00";
+                    return;
+                }
+
+                let totalSeconds = Math.floor(diff / 1000);
+                let totalMinutes = Math.floor(totalSeconds / 60);
+                let totalHours = Math.floor(totalMinutes / 60);
+                let totalDays = Math.floor(totalHours / 24);
+                
+                const displaySeconds = totalSeconds % 60;
+                const displayMinutes = totalMinutes % 60;
+                const displayHours = totalHours % 24;
+                
+                daysElement.textContent = String(totalDays); 
+                hoursElement.textContent = String(displayHours).padStart(2, '0');
+                minutesElement.textContent = String(displayMinutes).padStart(2, '0');
+                secondsElement.textContent = String(displaySeconds).padStart(2, '0');
+            }
+            updateTogetherCounter(); 
+            setInterval(updateTogetherCounter, 1000);
+        }
+
+        function setupEventListeners() {
+            const fortuneCookie = document.getElementById('fortuneCookie');
+            const closeBtn = document.getElementById('closeBtn');
+            const messageContainer = document.getElementById('messageContainer');
+
+            if (fortuneCookie) fortuneCookie.addEventListener('click', handleCookieClick);
+            if (closeBtn) closeBtn.addEventListener('click', closeMessage);
+            
+            if (messageContainer) {
+                messageContainer.addEventListener('click', function(e) {
+                    if (e.target === messageContainer) closeMessage();
+                });
+            }
+
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.dataset.tab;
+                    switchMediaTab(tab);
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            const promiseContent = document.getElementById('promiseContent');
+            if(promiseContent) {
+                promiseContent.addEventListener('click', () => {
+                    promiseContent.classList.toggle('promise-revealed');
+                });
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                createSparkle(e.clientX, e.clientY);
+            });
+        }
+
+        function handleCookieClick() {
+            const cookie = document.getElementById('fortuneCookie');
+            if (!cookie) return;
+            cookie.classList.add('shaking');
+            setTimeout(() => {
+                cookie.classList.remove('shaking');
+                cookie.classList.add('cracked');
+                setTimeout(() => {
+                    showTodaysMessage();
+                    createHearts();
+                }, 500);
+            }, 800);
+        }
+
+        function showTodaysMessage() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            
+            const messageTypes = Object.keys(messages);
+            const randomType = messageTypes[Math.floor(Math.random() * messageTypes.length)];
+            
+            let typeLabel;
+            switch(randomType) {
+                case 'affirmations': typeLabel = 'Daily Affirmation'; break;
+                case 'memories': typeLabel = 'Sweet Memory'; break;
+                case 'jokes': typeLabel = 'A Little Giggle'; break;
+                case 'deepThoughts': typeLabel = 'From My Heart'; break;
+                case 'gratitude': typeLabel = 'So Grateful For You'; break;
+                default: typeLabel = "A Message For You";
+            }
+            
+            const messageArray = messages[randomType] || messages.affirmations;
+            const randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
+            
+            const messageContentEl = document.getElementById('messageContentContainer');
+            const messageContainerEl = document.getElementById('messageContainer');
+
+            if (messageContentEl) {
+                 messageContentEl.innerHTML = `
+                    <div class="message-box-content-wrapper"> <!-- Inner wrapper for styling if needed -->
+                        <div class="${randomType}">
+                            <div class="message-type">${typeLabel}</div>
+                            <div class="message-text">${randomMessage}</div>
+                            <div class="message-date">Day ${dayOfYear} of our endless love story</div>
+                        </div>
+                    </div>
+                `;
+            }
+            if (messageContainerEl) messageContainerEl.classList.add('show');
+            localStorage.setItem('lastOpenedDate', today.toDateString());
+        }
+
+        function closeMessage() {
+            const messageContainerEl = document.getElementById('messageContainer');
+            if (messageContainerEl) messageContainerEl.classList.remove('show');
+            
+            setTimeout(() => {
+                const cookie = document.getElementById('fortuneCookie');
+                if (cookie) cookie.classList.remove('cracked');
+            }, 500);
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            if (!heartsContainer) return;
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '💕'; 
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = window.innerHeight + 'px'; 
+                    heart.style.animationDelay = Math.random() * 0.5 + 's'; 
+                    heart.style.fontSize = Math.random() * 1 + 1 + 'rem'; 
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => { heart.remove(); }, 3000); 
+                }, i * 150); 
+            }
+        }
+
+        function showAlreadyOpened() {
+            const fortuneContainer = document.getElementById('fortuneContainer');
+            if (!fortuneContainer) return;
+            fortuneContainer.innerHTML = `
+                <div class="already-opened">
+                    <div class="opened-message">✨ You've already opened today's surprise! ✨</div>
+                    <div class="comeback-text">
+                        Come back tomorrow for another sweet message 💕<br>
+                        But feel free to explore and enjoy our memories!
+                    </div>
+                </div>
+            `;
+        }
+
+        // MEDIA PLAYER FUNCTIONS - Corrected
+        function initializeMediaPlayer() {
+            switchMediaTab('songs'); 
+        }
+
+        function switchMediaTab(tabType) {
+            const listWrapper = document.getElementById('mediaContentListWrapper');
+            if (!listWrapper || !mediaLibrary[tabType]) return;
+            const mediaList = mediaLibrary[tabType];
+            
+            let html = ''; // Build list items directly
+            mediaList.forEach((item, index) => {
+                html += `
+                    <div class="media-item" onclick="playMedia('${tabType}', ${index})">
+                        <div class="media-name">${item.name}</div>
+                        <div class="media-description">${item.description}</div>
+                    </div>
+                `;
+            });
+            listWrapper.innerHTML = html; // Populate the list wrapper
+        }
+
+        function playMedia(type, index) {
+            if (!mediaLibrary[type] || !mediaLibrary[type][index]) return;
+            const item = mediaLibrary[type][index];
+            const currentMediaDisplay = document.getElementById('currentMediaDisplay');
+            if (!currentMediaDisplay) return;
+            
+            document.querySelectorAll('.media-item').forEach(el => el.classList.remove('playing'));
+            // Target items within the list wrapper specifically for the 'playing' class
+            const listItems = document.querySelectorAll('#mediaContentListWrapper .media-item');
+            if (listItems[index]) listItems[index].classList.add('playing');
+            
+            let mediaHtml = `<div class="playing-title">${item.type === 'audio' ? '♪' : (item.type === 'image' ? '📸' : '🎬')} ${item.name}</div>`;
+            if (item.type === 'audio') {
+                mediaHtml += `<audio controls autoplay><source src="${item.url}" type="audio/mpeg">Your browser does not support the audio element.</audio>`;
+            } else if (item.type === 'image') {
+                mediaHtml += `<img src="${item.url}" alt="${item.name}" loading="lazy">`;
+            } else if (item.type === 'video') {
+                mediaHtml += `<video controls autoplay muted width="100%"><source src="${item.url}" type="video/mp4">Your browser does not support the video element.</video>`;
+            }
+            mediaHtml += `<div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 0.5rem;">${item.description}</div>`;
+            currentMediaDisplay.innerHTML = mediaHtml;
+        }
+        // END MEDIA PLAYER FUNCTIONS
+
+        function initializeRomanticUI() {
+            populateMilestones();
+            startReasonsCarousel();
+        }
+
+        function populateMilestones() {
+            const milestonesContainer = document.getElementById('milestonesContainer');
+            if (!milestonesContainer) return;
+            const milestonesData = [
+                { icon: 'fas fa-heart', title: 'The Day We Met', date: 'A beautiful yesterday', desc: 'Sparks flew, and a new story began.' },
+                { icon: 'fas fa-kiss-wink-heart', title: 'Our First "I Love You"', date: 'Etched in memory', desc: 'Three words, a universe of meaning.' },
+                { icon: 'fas fa-ring', title: 'A Promise Made', date: 'Forever and always', desc: 'Looking forward to countless tomorrows.' },
+                { icon: 'fas fa-plane-departure', title: 'Our First Adventure', date: 'Exploring together', desc: 'Making memories around the world, or just around the corner.' },
+                { icon: 'fas fa-home', title: 'Building Our Nest', date: 'Our cozy haven', desc: 'Where love resides and dreams grow.' }
+            ];
+            milestonesContainer.innerHTML = ''; 
+            milestonesData.forEach(m => {
+                const card = document.createElement('div');
+                card.className = 'milestone-card';
+                card.innerHTML = `
+                    <div class="milestone-icon"><i class="${m.icon}"></i></div>
+                    <h3 class="milestone-title">${m.title}</h3>
+                    <p class="milestone-date">${m.date}</p>
+                    <p class="milestone-desc">${m.desc}</p>
+                `;
+                milestonesContainer.appendChild(card);
+            });
+        }
+
+        let currentReasonIndex = 0;
+        const reasonsData = [
+            { icon: '💖', text: "Your laugh is my favorite song." }, { icon: '✨', text: "You make ordinary moments magical." }, { icon: '🌟', text: "Your kindness shines brighter than any star." }, { icon: '😊', text: "The way you look at me melts my heart." }, { icon: '🤗', text: "Your hugs feel like home." }, { icon: '💡', text: "You inspire me to be a better person." }
+        ];
+        let reasonsIntervalId = null; 
+
+        function startReasonsCarousel() {
+            const carouselContainer = document.getElementById('reasonsCarousel');
+            if (!carouselContainer || reasonsData.length === 0) return;
+            
+            carouselContainer.innerHTML = ''; 
+            reasonsData.forEach((reason) => {
+                const slide = document.createElement('div');
+                slide.className = 'reason-slide';
+                slide.innerHTML = `<span class="reason-icon">${reason.icon}</span><p class="reason-text">${reason.text}</p>`;
+                carouselContainer.appendChild(slide);
+            });
+
+            const slides = carouselContainer.querySelectorAll('.reason-slide');
+            if (slides.length > 0) {
+                slides[currentReasonIndex].classList.add('active'); 
+                if (reasonsIntervalId) clearInterval(reasonsIntervalId);
+                reasonsIntervalId = setInterval(() => {
+                    if (slides[currentReasonIndex]) slides[currentReasonIndex].classList.remove('active');
+                    currentReasonIndex = (currentReasonIndex + 1) % slides.length;
+                    if (slides[currentReasonIndex]) slides[currentReasonIndex].classList.add('active');
+                }, 5000);
+            }
+        }
+        
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            document.body.appendChild(sparkle);
+            setTimeout(() => { sparkle.remove(); }, 600); 
+        }
+    </script>
+</body>
+</html>
