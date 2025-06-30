@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Toto 💕 Our Eternal Story</title>
+    <!-- LOGIN CHECK SCRIPT - MUST BE EARLY -->
+    <script>
+        if (sessionStorage.getItem('isLoveLoggedIn') !== 'true') {
+            window.location.href = 'login.html'; // Redirect to login if not logged in
+        }
+    </script>
+    <style>
+        /* === FONT IMPORT UPDATED HERE === */
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap');
+        
+        /* --- START: NEW INTRO STYLES (ENHANCED) --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 20%, #4a4a6e, #1a1a2e, #0c0c1e);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 2s ease-out; /* Modified transition */
+        }
+        .intro-star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        .candle-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer; /* Make it clear this is clickable */
+        }
+        .candle {
+            width: 80px;
+            height: 200px;
+            background: linear-gradient(to right, #f8f8f8, #e0e0e0);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        .wick {
+            position: absolute;
+            width: 6px;
+            height: 15px;
+            background: #5A4A42;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .flame {
+            position: absolute;
+            width: 22px;
+            height: 35px;
+            background-color: #ffda79;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: -48px;
+            left: 50%;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: bottom;
+            opacity: 0;
+            box-shadow: 0 0 15px 8px #ffda79, 0 0 25px 15px #ffb142;
+            transition: all 0.5s ease-in-out;
+        }
+        .flame.lit {
+            opacity: 1;
+            transform: translateX(-50%) scaleY(1);
+            animation: flicker 1.5s ease-in-out infinite alternate, 
+                       glow 3s ease-in-out infinite alternate; /* Combined animations */
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scaleY(1) skewX(0deg); }
+            50% { transform: translateX(-52%) scaleY(0.95) skewX(2deg); opacity: 0.9; }
+            100% { transform: translateX(-48%) scaleY(1.02) skewX(-2deg); }
+        }
+        /* New glow animation */
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 15px 8px #ffda79, 0 0 25px 15px #ffb142, 0 0 40px 20px rgba(255, 165, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px 10px #ffda79, 0 0 35px 18px #ffb142, 0 0 50px 25px rgba(255, 165, 0, 0.6);
+            }
+        }
+        .intro-instruction {
+            font-family: 'Dancing Script', cursive;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: pulse 3s infinite;
+            transition: opacity 0.5s ease-in-out; /* Transition for text change */
+        }
+        /* --- END: NEW INTRO STYLES --- */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white; /* Default text color */
+            min-height: 100vh;
+            overflow: hidden; /* Hide scrollbars to keep sparkles contained */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 18s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem; 
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+        }
+
+        .together-counter {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .counter-intro {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+        .counter-display {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            flex-wrap: wrap;
+            gap: 0.5em 1em;
+        }
+        .counter-display div {
+            text-align: center;
+            min-width: 70px;
+        }
+        .counter-display span.value {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem; 
+            font-weight: 700;
+            display: block; 
+            line-height: 1.1;
+        }
+        .counter-display span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem; 
+            font-weight: 400;
+            opacity: 0.8;
+            display: block; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2em; 
+        }
+        .counter-romantic-text {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        .date-display {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem 2rem;
+            margin-bottom: 2.5rem; 
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            width: fit-content; 
+        }
+        
+        .today-date {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .surprise-container {
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            margin-bottom: 3rem; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px; /* Make space for chain */
+            min-height: 250px;
+        }
+        
+        .locket {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.3s ease;
+        }
+        .locket:hover {
+            transform: translateY(-5px) rotate(3deg);
+        }
+        .locket::before { /* Locket Chain */
+            content: '';
+            position: absolute;
+            top: -50px; left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #e4d0a0);
+            opacity: 0.8;
+        }
+
+        .locket-front, .locket-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform-origin: left center;
+            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .locket-front::before, .locket-front::after,
+        .locket-back::before, .locket-back::after { /* Heart shape halves */
+            content: '';
+            position: absolute;
+            width: 75px;
+            height: 120px;
+            border-radius: 50px 50px 0 0;
+            background: linear-gradient(135deg, #f9d423 0%, #e7b400 100%);
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2);
+        }
+
+        .locket-front::before, .locket-back::before {
+            left: 75px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .locket-front::after, .locket-back::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        .locket-back {
+            background-color: #5d4954; /* Velvety interior color */
+            transform: rotateY(0deg);
+        }
+
+        .locket-front {
+            z-index: 10;
+        }
+        .locket-front::after {
+            box-shadow: inset 5px 0px 10px rgba(0,0,0,0.15); /* Shadow on right side for depth */
+        }
+        
+        .locket-front::after { 
+             content: '✨';
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             font-size: 2rem;
+             color: white;
+             text-shadow: 0 0 10px white;
+             background: none; /* Override heart shape background */
+             box-shadow: none; /* Override heart shape shadow */
+             animation: sparkle-pulse 3s infinite ease-in-out;
+        }
+        @keyframes sparkle-pulse {
+             0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.8; }
+             50% { transform: rotate(45deg) scale(1.2); opacity: 1; }
+        }
+
+        .locket.open .locket-front {
+            transform: rotateY(-160deg);
+        }
+
+        .instruction {
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        .romantic-section {
+            width: 100%;
+            max-width: 700px; 
+            margin: 0 auto 3rem auto; 
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* --- START: Constellation of Memories Styles --- */
+        #constellationSection {
+            text-align: center;
+        }
+
+        .constellation-map {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%), 
+                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cg fill-opacity="0.1"%3E%3Ccircle fill="%23ffffff" cx="50" cy="50" r="1"/%3E%3C/g%3E%3C/svg%3E'); /* Faint nebula and tiny dots */
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .memory-star {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 8px 2px white, 0 0 14px 4px #ffc1e3, 0 0 20px 6px #bf9ee5;
+            animation: twinkle 4s infinite ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .memory-star:hover {
+            transform: scale(1.8);
+            box-shadow: 0 0 12px 4px white, 0 0 20px 8px #ffc1e3, 0 0 30px 12px #bf9ee5;
+            animation-play-state: paused;
+        }
+
+        .constellation-instruction {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Styling for the memory content inside the modal */
+        .memory-display-icon {
+            font-size: 2.5rem;
+            color: #d47aab;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(212, 122, 171, 0.7);
+        }
+        .memory-display-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .memory-display-date {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(44, 62, 80, 0.7);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .memory-display-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(44, 62, 80, 0.9);
+        }
+        /* --- END: Constellation of Memories Styles --- */
+        
+        /* --- START: Quiz Feature Styles --- */
+        #loveQuizSection {
+            text-align: center;
+        }
+        #quizContainer {
+            margin-top: 1.5rem;
+            min-height: 250px; /* Prevent layout shift */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            animation: fadeInDown 0.5s;
+        }
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.5s;
+        }
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .quiz-option:hover:not(.disabled) {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        .quiz-option.correct {
+            background: #27ae60 !important;
+            color: white;
+            border-color: #2ecc71;
+            transform: scale(1.02);
+        }
+        .quiz-option.incorrect {
+            background: #c0392b !important;
+            color: white;
+            border-color: #e74c3c;
+        }
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        #startQuizBtn, #quizNextBtn {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #2c3e50;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+        }
+        #startQuizBtn:hover, #quizNextBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .quiz-result {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            animation: fadeInText 1s;
+        }
+        .quiz-result .score {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            display: block;
+            margin: 1rem 0;
+            color: #ffaddd;
+            text-shadow: 0 0 10px #ffaddd;
+        }
+        /* --- END: Quiz Feature Styles --- */
+        
+        .promise-section { text-align: center; }
+        .promise-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .promise-content:hover { background: rgba(255, 255, 255, 0.1); }
+        .promise-instruction { font-size: 1rem; opacity: 0.8; margin-bottom: 1rem; }
+        
+        .promise-text-hidden {
+            display: none;
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            color: #fde7f1; 
+            line-height: 1.6;
+            margin-top: 1rem;
+            animation: fadeInText 1s ease-out;
+            direction: rtl; 
+        }
+
+        @keyframes fadeInText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .promise-revealed .promise-instruction { display: none; }
+        .promise-revealed .promise-text-hidden { display: block; }
+        .promise-seal {
+            font-size: 2.5rem;
+            color: #ff8fab; 
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            transition: transform 0.5s ease;
+        }
+        .promise-revealed .promise-seal { transform: rotate(720deg) scale(0.8); opacity: 0.5; }
+
+
+        .message-container {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        .message-container.show { opacity: 1; visibility: visible; }
+        .message-box {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            border-radius: 25px; padding: 3rem;
+            max-width: 500px; width: 90%;
+            text-align: center; position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.5s ease;
+        }
+        .message-container.show .message-box { transform: scale(1) translateY(0); }
+        .close-btn {
+            position: absolute; top: 15px; right: 20px;
+            background: none; border: none;
+            font-size: 2rem; color: rgba(0,0,0,0.6);
+            cursor: pointer; transition: color 0.3s ease;
+        }
+        .close-btn:hover { color: rgba(0,0,0,0.8); }
+        .message-box .message-content { color: #2c3e50; }
+
+        .message-type {
+            font-size: 0.9rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: rgba(0,0,0,0.6); margin-bottom: 1rem;
+        }
+        .message-text {
+            font-size: 1.3rem; line-height: 1.6;
+            margin-bottom: 1.5rem; font-weight: 400;
+        }
+        .memory .message-text { font-style: italic; }
+        .affirmation .message-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem; font-weight: 600;
+        }
+        .message-date { font-size: 0.9rem; color: rgba(0,0,0,0.5); margin-top: 1rem; }
+        
+        .media-player {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 400px;
+            width: 100%;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .media-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .media-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .media-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .tab-btn.active {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.05);
+        }
+        
+        .media-content-list-wrapper { 
+             min-height: 150px;
+             max-height: 200px;
+             overflow-y: auto;
+             scrollbar-width: thin;
+             scrollbar-color: rgba(255,255,255,0.3) transparent;
+             margin-top: 1rem;
+        }
+
+        .media-content-list-wrapper::-webkit-scrollbar { width: 4px; }
+        .media-content-list-wrapper::-webkit-scrollbar-track { background: transparent; }
+        .media-content-list-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+        
+        .media-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin: 0.5rem 0.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .media-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        
+        .media-item.playing {
+            background: rgba(255,182,193,0.3);
+            border-color: rgba(255,182,193,0.5);
+        }
+        
+        .media-name {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        
+        .media-description {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+        }
+
+        .playing-title {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+        }
+
+        /* --- START: FANCY MEDIA PLAYER STYLES --- */
+        
+        .current-media-display {
+            position: relative; /* For overlaying controls */
+            overflow: hidden;
+            background: transparent;
+            padding: 0;
+            min-height: 0;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Hide default controls */
+        audio::-webkit-media-controls-panel,
+        video::-webkit-media-controls-panel {
+            display: none !important;
+            -webkit-appearance: none;
+        }
+        audio::-webkit-media-controls-play-button,
+        video::-webkit-media-controls-play-button { 
+            display: none !important; 
+        }
+
+        /* Custom Controls Container */
+        .custom-media-controls {
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        /* For video, controls will overlay and fade in/out */
+        .video-wrapper .custom-media-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            margin-top: 0;
+            border-radius: 0 0 10px 10px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .video-wrapper:hover .custom-media-controls {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .controls-main-line {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .time-display {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            min-width: 85px; /* Prevent layout shift */
+            text-align: center;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+        .control-btn:hover {
+            transform: scale(1.15);
+            color: #ffaddd; /* Pinkish accent color */
+        }
+        .control-btn .fa-pause { display: none; }
+        .playing .control-btn .fa-pause { display: inline-block; }
+        .playing .control-btn .fa-play { display: none; }
+        
+        /* Fancy Progress & Volume Sliders */
+        .progress-bar-wrapper, .volume-slider-wrapper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .volume-slider-wrapper {
+            flex-grow: 0;
+            max-width: 120px;
+        }
+
+        input[type="range"].fancy-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        input[type="range"].fancy-slider:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Thumb for Chrome/Safari/Edge */
+        input[type="range"].fancy-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            border: 2px solid #ffaddd;
+            box-shadow: 0 0 10px rgba(255, 173, 221, 0.7);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        input[type="range"].fancy-slider:hover::-webkit-slider-thumb {
+            transform: scale(1.1);
+        }
+
+        /* Thumb for Firefox */
+        input[type="range"].fancy-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            border: 2px solid #ffaddd;
+            box-shadow: 0 0 10px rgba(255, 173, 221, 0.7);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        input[type="range"].fancy-slider:hover::-moz-range-thumb {
+            transform: scale(1.1);
+        }
+        
+        .current-media-display audio, .current-media-display video {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* --- END: FANCY MEDIA PLAYER STYLES --- */
+        
+        .hearts { position: absolute; pointer-events: none; }
+        .heart {
+            position: absolute; color: #ff6b6b;
+            font-size: 1.5rem; animation: floatUp 3s ease-out infinite;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .already-opened {
+            text-align: center; background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px); border-radius: 20px;
+            padding: 2rem; border: 1px solid rgba(255,255,255,0.2); color: white;
+        }
+        .opened-message { font-size: 1.1rem; margin-bottom: 1rem; }
+        .comeback-text { font-size: 0.9rem; opacity: 0.8; }
+        
+        .sparkle {
+            position: fixed;
+            width: 6px; height: 6px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none; opacity: 0;
+            transform: translate(-50%, -50%);
+            animation: sparkle-fade 0.6s ease-out forwards; 
+            z-index: 9999; 
+        }
+        @keyframes sparkle-fade {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            .message-box { padding: 2rem; }
+            .counter-display span.value { font-size: 1.8rem; }
+            .counter-display span.label { font-size: 0.6rem; }
+            .counter-intro, .counter-romantic-text { font-size: 0.9rem; }
+            .section-title { font-size: 1.8rem; }
+            .promise-text-hidden { font-size: 1.4rem; }
+            .media-player { max-width: 90%; }
+        }
+         @media (max-width: 480px) {
+            .title { font-size: 2.2rem; }
+            .counter-display { gap: 0.3em 0.5em; }
+            .counter-display div { min-width: 55px; }
+            .counter-display span.value { font-size: 1.6rem; }
+            .counter-display span.label { font-size: 0.5rem; }
+            .promise-text-hidden { font-size: 1.2rem; }
+            .romantic-section { padding: 1rem; }
+            .controls-main-line { flex-wrap: wrap; gap: 0.5rem; }
+            .time-display { min-width: auto; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <!-- AUDIO ELEMENT FOR SOUND EFFECT -->
+    <audio id="light-sound" src="light-up.mp3" preload="auto"></audio>
+
+    <!-- --- START: NEW INTRO HTML (ENHANCED) --- -->
+    <div id="intro-overlay">
+        <div class="candle-container" id="candleContainer">
+            <div class="candle">
+                <div class="wick"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        <p class="intro-instruction" id="introInstruction">Click the candle to light it up...</p>
+    </div>
+    <!-- --- END: NEW INTRO HTML --- -->
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Happy 17th Birthday Toto ✨</h1>
+            <p class="subtitle">Our Eternal Story of Surprises 💕</p>
+
+            <div class="together-counter">
+                <p class="counter-intro">Our journey so far:</p>
+                <div class="counter-display">
+                    <div><span class="value" id="together-days">0</span> <span class="label">Days</span></div>
+                    <div><span class="value" id="together-hours">00</span> <span class="label">Hours</span></div>
+                    <div><span class="value" id="together-minutes">00</span> <span class="label">Minutes</span></div>
+                    <div><span class="value" id="together-seconds">00</span> <span class="label">Seconds</span></div>
+                </div>
+                <p class="counter-romantic-text">of endless fights and laughter ❤️</p>
+            </div>
+        </header>
+
+        <div class="media-player">
+            <div class="media-header">
+                <h3 class="media-title">Our  Playlist 💕</h3>
+                <div class="media-tabs">
+                    <button class="tab-btn active" data-tab="songs">Songs</button>
+                    <button class="tab-btn" data-tab="photos">Photos</button>
+                    <button class="tab-btn" data-tab="videos">Videos</button>
+                </div>
+            </div>
+            
+            <div class="current-media-display" id="currentMediaDisplay">
+                <div style="color: white; opacity: 0.7;">Select something special from our list... 🎵</div>
+            </div>
+            
+            <div class="media-content-list-wrapper" id="mediaContentListWrapper">
+                <!-- Media items will be populated here by JS -->
+            </div>
+        </div>
+        
+        <div class="date-display">
+            <div class="today-date" id="currentDate">𝒯𝓊ℯ𝓈𝒹𝒶𝓎, 𝒥𝓊𝓁𝓎 𝟙, 𝟚𝟘𝟚𝟝✨</div>
+        </div>
+        
+        <div class="surprise-container" id="surpriseContainer">
+             <div class="locket" id="locket">
+                <div class="locket-back"></div>
+                <div class="locket-front"></div>
+            </div>
+            <p class="instruction">A precious memory is locked inside... Click to open! 💖</p>
+        </div>
+
+        <section class="romantic-section" id="constellationSection">
+            <h2 class="section-title">Our Constellation of Memories ✨</h2>
+            <div class="constellation-map" id="constellationMap">
+                <!-- Stars will be dynamically added here by JavaScript -->
+            </div>
+            <p class="constellation-instruction">
+                Each star holds a precious memory. Click on one to relive the moment.
+            </p>
+        </section>
+
+        <!-- ====== START: NEW QUIZ FEATURE ====== -->
+        <section class="romantic-section" id="loveQuizSection">
+            <h2 class="section-title">A Little Quiz About Us 🤔💕</h2>
+            <div id="quizContainer">
+                 <!-- Quiz content will be injected here by JavaScript -->
+            </div>
+            <button id="startQuizBtn">Yalla Beena</button>
+        </section>
+        <!-- ====== END: NEW QUIZ FEATURE ====== -->
+        
+        <section class="romantic-section promise-section" id="specialPromise">
+            <h2 class="section-title">Happy Birthday Ya Gamoosa 💌</h2>
+            <div class="promise-content" id="promiseContent">
+                <span class="promise-seal" id="promiseSeal">💖</span>
+                <p class="promise-instruction">Tap to reveal Your Birthday Message...</p>
+                <p class="promise-text-hidden" id="promiseText">
+                    اكتر واحدة قموصه في الدنيا عرفتها في حياتي واكتر واحده عيونها متتوصفش شوفتها في حياتي و اكتر واحدة في الدنيا لما بتتزنق وتحس انها هتقول كلمة حلوة بتقول ظز فيك قال يعني انا مترجمتش وكدا كل حاجه بتعمليها بتكون مميزة بالطريقة التوتية وبضحك علي هطلك كتير بجد😂 ... متشكرين علي وقفتك جنبي في الجيش كنتي السيف زون بتاعتي في سنه مليانه بتعب وموت حرفيا ونفسيه صعبه كنت بتكلم معاكي بس بنسي عبعزيز والي جاب عبعزيز ودي كفايه بجد عارف اني عصبي معاكي حبتين بالذات في الحاجات الي بنصحك فيها بس بجد انا بعمل كدا عشان انا مش عاوز اشوفك بتاخدي طريق شوفت ناس خدته وندمت في الاخر انا عاوزك توتو الي عرفتها من وهيا لسه ف 3 اعدادي شوفتها وعجبتني لاني حسيتها مش توتو الي ممكن تجري ورا عيال مش خايفين علي نفسيهم عشان يخافو عليها بس فمتزعليش لو قفشت عليكي جامد ف مره واه هديكي بالجزمه لو برضو لقيتك ماشيه غلط او تايهه عشان معاايا انا لا يمكن اسمح ب دا انتي تبعي  .. بجد كل سنه وانتي طيبه يا توتي احلا واحده تتم ال17 سنه منذ فجر التاريخ عمتا مش مجرد رقم بتضيفيه لعمرك دي سنه جديده هتبقي مليانه ضحك وتحديات وذكريات هنعملها سوا سنه هتكبري فيها اكتر وهتكتشفي فيها حاجات جديده في نفسك وفي الدنيا وانا معاكي ومش هسيبك وهتقربي اكتر من احلامك انا مبسوط بوجودك وضحكتك المتخلفه الي بتعدي اي حاجه وحنيتك الي بشوفها مع اهلك واخواتك في السنه دي بتمنالك كل حاجه حلوه ممكن تتخيليها بتمنالك نجاح كبير في دراستك وفرحه تملي قلبك وناس حواليكي شبهك عاوزك شجاعه تجري ورا حلمك وقويه تواجهي اي تحدي يقابلك وحكيمة بتختاري صح مفيش اي حاجه تقف قدامك ولا ثانويه ولا اي حاجه انا واثق فيكي وعارف انك قد الثقه دي واكتر كمان.. خليكي دايما زي مانتي بنفس الروح الحلوه واوعي الدنيا تغيرك او تبهت ضحكتك يا توتو كل سنه وانتي معايا يا بجرة ❤️🎉
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <div class="message-container" id="messageContainer">
+        <div class="message-box">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div id="messageContentContainer"></div>
+        </div>
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <script>
+        const messages = {
+            affirmations: [ "شربي مراد فيروز بعد كدا وخليه يسيبنا في حالنا يا جلدة", "فاكرة لما عملت مقلب في الحمام بتاع الجيش 😂" ],
+            memories: [ "Always Remember You are The prettiest girl in the world💖", ],
+            jokes: [ "القمص يدمر الصحه ويسبب الوفاة ", "دراسة اتعملت بتقول ان رجالة المطرية هيا انسب رجالة ف اي حاجه " ],
+            deepThoughts: [   "In the library of my life, you're not just a chapter, you're the whole story 📚💕", "With you, I've learned that home isn't a place - it's a person, and you're mine 🏠💝" ],
+            gratitude: [ "Thank you for seeing beauty in my chaos and finding perfection in my flaws 🌪️✨", "Thank you for being my safe space in a world that often feels overwhelming 🛡️🤗", "I'm thankful for your patience with my quirks and your celebration of my dreams 🎭🌟" ]
+        };
+        const mediaLibrary = {
+            songs: [
+                { name: "Our Song", description: "Yes I decided this is our unique song", url: "oursong1.mp3", type: "audio" },
+                { name: "Your Favourite Song", description: 'Aziz Maraka - "Meen Galk"', url: "mengalk.mp3", type: "audio" },
+                { name: "Sway With Me", description: 'Michael Bublé - "Sway "', url: "sway.mp3", type: "audio" },
+                { name: "Hashrab Haseesh", description: 'The Song No One Knows We Listen To"', url: "luka.mp3", type: "audio" },
+                { name: "When we fight", description: 'Listen to it when you are angry at me', url: "bahaa.mp3", type: "audio" }
+            ],
+            photos: [
+                { name: "Our First Meet", description: "شكلك كان فاجر بالكروكس", url: "anastoto.png?w=400", type: "image" },
+                { name: "Toto 3abeta", description: "بطلي هبل بقي", url: "toto1.jpg", type: "image" },
+                { name: "Last Year ", description: " وَ عيناك، إني بها لمنَ المُغرمين", url: "toto.jpg?w=400", type: "image" }
+            ],
+            videos: [
+                { name: "Kitchen Dance", description: "Your silly moves always make me smile", url: "fawzy.mp4", type: "video" },
+            ]
+        };
+
+        let mouseMoveTimeout;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- START: NEW INTRO SCRIPT (ENHANCED VERSION) ---
+            const introOverlay = document.getElementById('intro-overlay');
+            const candleContainer = document.getElementById('candleContainer');
+            const flame = introOverlay.querySelector('.flame');
+            const instructionText = document.getElementById('introInstruction');
+            const mainContainer = document.querySelector('.container');
+            const lightSound = document.getElementById('light-sound');
+
+            // Create stars for the intro screen
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'intro-star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 2 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                introOverlay.appendChild(star);
+            }
+            
+            // Listen for a click on the candle container
+            candleContainer.addEventListener('click', () => {
+                // 1. Play the sound immediately for instant feedback
+                lightSound.play();
+
+                // 2. Light the flame
+                flame.classList.add('lit');
+                candleContainer.style.cursor = 'default'; // Change cursor
+                
+                // 3. Fade out the old instruction text
+                instructionText.style.opacity = '0';
+
+                // 4. After a short delay, change the text and fade it back in
+                setTimeout(() => {
+                    instructionText.textContent = 'Make a wish... ✨';
+                    instructionText.style.opacity = '1';
+                }, 600); // 0.6 seconds
+
+                // 5. After the user has a moment to "make a wish", start the transition to the main page
+                setTimeout(() => {
+                    introOverlay.style.pointerEvents = 'none';
+                    introOverlay.style.opacity = '0'; // Fade out the entire overlay
+                    mainContainer.style.opacity = '1'; // Fade in the main content
+                }, 2500); // 2.5 seconds after clicking
+
+                // 6. Clean up by removing the overlay from the DOM after the transition is complete
+                setTimeout(() => {
+                    introOverlay.remove();
+                }, 4500); // 2.5s delay + 2s transition
+
+            }, { once: true }); // The event listener only runs once
+            // --- END: NEW INTRO SCRIPT ---
+
+            if (sessionStorage.getItem('isLoveLoggedIn') !== 'true') {
+                window.location.href = 'login.html'; 
+                return; 
+            }
+
+            createStars();
+            initializeTogetherCounter(); 
+            setupEventListeners();
+            initializeMediaPlayer();
+            populateConstellation();
+            initializeQuiz();
+            
+            setInterval(createRandomSparkle, 250);
+            
+            const today = new Date().toDateString();
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const lastOpened = localStorage.getItem('lastOpenedDate');
+            
+            const surpriseContainer = document.getElementById('surpriseContainer');
+            if (surpriseContainer && lastOpened === today) {
+                showAlreadyOpened();
+            }
+        });
+
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            if (!starsContainer) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function initializeTogetherCounter() {
+            const daysElement = document.getElementById('together-days');
+            const hoursElement = document.getElementById('together-hours');
+            const minutesElement = document.getElementById('together-minutes');
+            const secondsElement = document.getElementById('together-seconds');
+
+            if (!daysElement || !hoursElement || !minutesElement || !secondsElement) { return; }
+
+            const anniversaryStartDate = new Date(2023, 4, 29, 17, 0, 0); 
+
+            function updateTogetherCounter() {
+                const currentTime = new Date();
+                const diff = currentTime.getTime() - anniversaryStartDate.getTime();
+
+                if (diff < 0) {
+                    daysElement.textContent = "0";
+                    hoursElement.textContent = "00";
+                    minutesElement.textContent = "00";
+                    secondsElement.textContent = "00";
+                    return;
+                }
+
+                let totalSeconds = Math.floor(diff / 1000);
+                let totalMinutes = Math.floor(totalSeconds / 60);
+                let totalHours = Math.floor(totalMinutes / 60);
+                let totalDays = Math.floor(totalHours / 24);
+                
+                const displaySeconds = totalSeconds % 60;
+                const displayMinutes = totalMinutes % 60;
+                const displayHours = totalHours % 24;
+                
+                daysElement.textContent = String(totalDays); 
+                hoursElement.textContent = String(displayHours).padStart(2, '0');
+                minutesElement.textContent = String(displayMinutes).padStart(2, '0');
+                secondsElement.textContent = String(displaySeconds).padStart(2, '0');
+            }
+            updateTogetherCounter(); 
+            setInterval(updateTogetherCounter, 1000);
+        }
+
+        function setupEventListeners() {
+            const locketEl = document.getElementById('locket');
+            if (locketEl) locketEl.addEventListener('click', handleLocketClick);
+            
+            const closeBtn = document.getElementById('closeBtn');
+            const messageContainer = document.getElementById('messageContainer');
+
+            if (closeBtn) closeBtn.addEventListener('click', closeMessage);
+            
+            if (messageContainer) {
+                messageContainer.addEventListener('click', function(e) {
+                    if (e.target === messageContainer) closeMessage();
+                });
+            }
+
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.dataset.tab;
+                    switchMediaTab(tab);
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            const promiseContent = document.getElementById('promiseContent');
+            if(promiseContent) {
+                promiseContent.addEventListener('click', () => {
+                    promiseContent.classList.toggle('promise-revealed');
+                });
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                clearTimeout(mouseMoveTimeout);
+                mouseMoveTimeout = setTimeout(() => {
+                    for (let i = 0; i < 2; i++) {
+                        createSparkle(e.clientX, e.clientY);
+                    }
+                }, 10); 
+            });
+        }
+        
+        function handleLocketClick() {
+            const locket = document.getElementById('locket');
+            if (!locket || locket.classList.contains('open')) return;
+            locket.classList.add('open');
+            setTimeout(() => {
+                showTodaysMessage();
+                createHearts();
+            }, 1000);
+        }
+
+        function showTodaysMessage() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            
+            const messageTypes = Object.keys(messages);
+            const randomType = messageTypes[Math.floor(Math.random() * messageTypes.length)];
+            let typeLabel;
+            switch(randomType) {
+                case 'affirmations': typeLabel = 'Daily Affirmation'; break;
+                case 'memories': typeLabel = 'Sweet Memory'; break;
+                case 'jokes': typeLabel = 'A Little Giggle'; break;
+                case 'deepThoughts': typeLabel = 'From My Heart'; break;
+                case 'gratitude': typeLabel = 'So Grateful For You'; break;
+                default: typeLabel = "A Message For You";
+            }
+            
+            const messageArray = messages[randomType] || messages.affirmations;
+            const randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
+            
+            const messageContentEl = document.getElementById('messageContentContainer');
+            const messageContainerEl = document.getElementById('messageContainer');
+
+            if (messageContentEl) {
+                 messageContentEl.innerHTML = `
+                    <div class="message-content">
+                        <div class="${randomType}">
+                            <div class="message-type">${typeLabel}</div>
+                            <div class="message-text">${randomMessage}</div>
+                            <div class="message-date">Your Protector , [Anas] </div>
+                        </div>
+                    </div>
+                `;
+            }
+            if (messageContainerEl) messageContainerEl.classList.add('show');
+            localStorage.setItem('lastOpenedDate', new Date().toDateString());
+        }
+
+        function closeMessage() {
+            const messageContainerEl = document.getElementById('messageContainer');
+            if (messageContainerEl) messageContainerEl.classList.remove('show');
+            
+            setTimeout(() => {
+                const locket = document.getElementById('locket');
+                if (locket && locket.classList.contains('open')) locket.classList.remove('open');
+            }, 500);
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            if (!heartsContainer) return;
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '💕'; 
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = window.innerHeight + 'px'; 
+                    heart.style.animationDelay = Math.random() * 0.5 + 's'; 
+                    heart.style.fontSize = Math.random() * 1 + 1 + 'rem'; 
+                    heartsContainer.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 3000); 
+                }, i * 150); 
+            }
+        }
+
+        function showAlreadyOpened() {
+            const surpriseContainer = document.getElementById('surpriseContainer');
+            if (!surpriseContainer) return;
+            surpriseContainer.innerHTML = `
+                <div class="already-opened">
+                    <div class="opened-message">✨ You've already revealed today's memory! ✨</div>
+                    <div class="comeback-text">
+                        Come back tomorrow for another sweet surprise 💕<br>
+                        But feel free to explore and enjoy our memories!
+                    </div>
+                </div>
+            `;
+        }
+
+        function initializeMediaPlayer() {
+            switchMediaTab('songs'); 
+        }
+
+        function switchMediaTab(tabType) {
+            const listWrapper = document.getElementById('mediaContentListWrapper');
+            if (!listWrapper || !mediaLibrary[tabType]) return;
+            const mediaList = mediaLibrary[tabType];
+            
+            let html = '';
+            mediaList.forEach((item, index) => {
+                html += `
+                    <div class="media-item" onclick="playMedia('${tabType}', ${index})">
+                        <div class="media-name">${item.name}</div>
+                        <div class="media-description">${item.description}</div>
+                    </div>
+                `;
+            });
+            listWrapper.innerHTML = html;
+        }
+        
+        function playMedia(type, index) {
+            if (!mediaLibrary[type] || !mediaLibrary[type][index]) return;
+            const item = mediaLibrary[type][index];
+            const displayContainer = document.getElementById('currentMediaDisplay');
+            if (!displayContainer) return;
+
+            document.querySelectorAll('.media-item').forEach(el => el.classList.remove('playing'));
+            const listItems = document.querySelectorAll('#mediaContentListWrapper .media-item');
+            if (listItems[index]) listItems[index].classList.add('playing');
+
+            let mediaHtml = '';
+            
+            if (item.type === 'image') {
+                mediaHtml = `
+                    <div class="playing-title">📸 ${item.name}</div>
+                    <img src="${item.url}" alt="${item.name}" loading="lazy" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 0.5rem; max-width: 100%;">
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem;">${item.description}</div>
+                `;
+                displayContainer.innerHTML = mediaHtml;
+                return;
+            }
+
+            const isVideo = item.type === 'video';
+            const mediaElementId = `media-player-${type}-${index}`;
+            
+            mediaHtml = `
+                <div class="playing-title">${isVideo ? '🎬' : '♪'} ${item.name}</div>
+                <div class="${isVideo ? 'video-wrapper' : 'audio-wrapper'}">
+                    ${isVideo 
+                        ? `<video id="${mediaElementId}" src="${item.url}" autoplay muted></video>` 
+                        : `<audio id="${mediaElementId}" src="${item.url}" autoplay></audio>`
+                    }
+                    <div class="custom-media-controls">
+                        <div class="controls-main-line">
+                            <button class="control-btn play-pause-btn"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
+                            <div class="progress-bar-wrapper">
+                                <input type="range" class="fancy-slider progress-bar" value="0" min="0" max="100" step="0.1">
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-slider-wrapper">
+                                <button class="control-btn volume-btn"><i class="fas fa-volume-up"></i><i class="fas fa-volume-mute" style="display:none;"></i></button>
+                                <input type="range" class="fancy-slider volume-slider" value="1" min="0" max="1" step="0.05">
+                            </div>
+                            ${isVideo ? '<button class="control-btn fullscreen-btn"><i class="fas fa-expand"></i></button>' : ''}
+                        </div>
+                    </div>
+                </div>
+                <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem;">${item.description}</div>
+            `;
+            displayContainer.innerHTML = mediaHtml;
+
+            const mediaElement = document.getElementById(mediaElementId);
+            const controlsContainer = displayContainer.querySelector('.custom-media-controls');
+            const playPauseBtn = controlsContainer.querySelector('.play-pause-btn');
+            const progressBar = controlsContainer.querySelector('.progress-bar');
+            const timeDisplay = controlsContainer.querySelector('.time-display');
+            const volumeBtn = controlsContainer.querySelector('.volume-btn');
+            const volumeSlider = controlsContainer.querySelector('.volume-slider');
+            const fullscreenBtn = controlsContainer.querySelector('.fullscreen-btn');
+            const wrapper = mediaElement.parentElement;
+
+            const formatTime = (seconds) => {
+                if (isNaN(seconds)) return '00:00';
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            };
+            const togglePlayPause = () => { if (mediaElement.paused) mediaElement.play(); else mediaElement.pause(); };
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            mediaElement.addEventListener('play', () => wrapper.classList.add('playing'));
+            mediaElement.addEventListener('pause', () => wrapper.classList.remove('playing'));
+            
+            mediaElement.addEventListener('timeupdate', () => {
+                if (isNaN(mediaElement.duration)) return;
+                progressBar.value = (mediaElement.currentTime / mediaElement.duration) * 100;
+                timeDisplay.textContent = `${formatTime(mediaElement.currentTime)} / ${formatTime(mediaElement.duration)}`;
+            });
+            
+            mediaElement.addEventListener('loadedmetadata', () => {
+                progressBar.max = 100;
+                timeDisplay.textContent = `00:00 / ${formatTime(mediaElement.duration)}`;
+                if(isVideo) volumeSlider.value = mediaElement.muted ? 0 : mediaElement.volume;
+                else volumeSlider.value = mediaElement.volume;
+                updateVolumeIcon();
+            });
+
+            progressBar.addEventListener('input', () => {
+                if (isNaN(mediaElement.duration)) return;
+                mediaElement.currentTime = (progressBar.value / 100) * mediaElement.duration;
+            });
+
+            let lastVolume = 1;
+            const updateVolumeIcon = () => {
+                const volIconUp = volumeBtn.querySelector('.fa-volume-up');
+                const volIconMute = volumeBtn.querySelector('.fa-volume-mute');
+                if (mediaElement.muted || mediaElement.volume === 0) {
+                    volIconUp.style.display = 'none';
+                    volIconMute.style.display = 'inline-block';
+                } else {
+                    volIconUp.style.display = 'inline-block';
+                    volIconMute.style.display = 'none';
+                }
+            };
+            volumeSlider.addEventListener('input', () => {
+                mediaElement.volume = volumeSlider.value;
+                mediaElement.muted = volumeSlider.value == 0;
+            });
+            volumeBtn.addEventListener('click', () => {
+                if (mediaElement.muted || mediaElement.volume === 0) {
+                    mediaElement.muted = false;
+                    mediaElement.volume = lastVolume > 0.1 ? lastVolume : 1;
+                    volumeSlider.value = mediaElement.volume;
+                } else {
+                    lastVolume = mediaElement.volume;
+                    mediaElement.muted = true;
+                    volumeSlider.value = 0;
+                }
+            });
+            mediaElement.addEventListener('volumechange', updateVolumeIcon);
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                    if (!document.fullscreenElement) {
+                        wrapper.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
+                    } else {
+                        document.exitFullscreen();
+                    }
+                });
+            }
+        }
+        
+        // --- Constellation of Memories Data ---
+        const constellationMemories = [
+            { x: 15, y: 40, icon: 'fas fa-heart', title: 'The Day We Met', date: '29/5/2023', desc: 'اسمها شطافات برضو انا حر' },
+            { x: 35, y: 65, icon: 'fas fa-kiss-wink-heart', title: 'The Unplanned Moment', date: '30/10/2024', desc: 'متبقيش تغمضي عينك جامد اوي بعد كدا ايوا انا يا ستي انا ' },
+            { x: 50, y: 20, icon: 'fas fa-ring', title: 'A Promise Made', date: 'Forever and always', desc: 'Your Biggest And Only Protector ' },
+            { x: 80, y: 35, icon: 'fas fa-plane-departure', title: 'Your Sister Engagement', date: 'جرية البطه بتاعتك دي  ', desc: 'في حد يتزق بالكرسي وميبقاش عارف يعمل اي كدا' },
+            { x: 65, y: 75, icon: 'fas fa-gamepad', title: 'PUBG Games', date: 'Every Night', desc: 'همووووت يا انس الحقنااااااااااااااي' }
+        ];
+
+        function populateConstellation() {
+            const mapContainer = document.getElementById('constellationMap');
+            if (!mapContainer) return;
+
+            mapContainer.innerHTML = ''; // Clear previous content
+
+            constellationMemories.forEach(memory => {
+                const star = document.createElement('div');
+                star.className = 'memory-star';
+                star.style.left = `${memory.x}%`;
+                star.style.top = `${memory.y}%`;
+                star.style.animationDelay = `${Math.random() * 4}s`;
+
+                star.addEventListener('click', () => {
+                    showMemoryInModal(memory);
+                });
+
+                mapContainer.appendChild(star);
+            });
+        }
+
+        function showMemoryInModal(memoryData) {
+            const messageContentEl = document.getElementById('messageContentContainer');
+            const messageContainerEl = document.getElementById('messageContainer');
+
+            if (messageContentEl && messageContainerEl) {
+                 messageContentEl.innerHTML = `
+                    <div class="message-content memory-display">
+                        <div class="memory-display-icon"><i class="${memoryData.icon}"></i></div>
+                        <h3 class="memory-display-title">${memoryData.title}</h3>
+                        <div class="memory-display-date">${memoryData.date}</div>
+                        <p class="memory-display-desc">${memoryData.desc}</p>
+                    </div>
+                `;
+                messageContainerEl.classList.add('show');
+            }
+        }
+
+        // --- START: NEW QUIZ FEATURE SCRIPT ---
+        const quizData = [
+            {
+                question: "الأغنية الي عملتهالك عجبتك بنسبه كام في الميه ",
+                options: ["100%", "تحفة", "عشرة من عشرة", "يا ولد يا انس"],
+                correct: 3
+            },
+            {
+                question: "اي اكتر حاجه كانت صعبة في حياتي",
+                options: ["ثانوية عامه", "منجحتش ف كارير الكورة", "الجيش", "عيونك"],
+                correct: 3
+            },
+            {
+                question: "مين اجمد واحد في ببجي ",
+                options: ["تقي", "عمك أنس", "احنا الاتنين ف تيم واحد", "مراد"],
+                correct: 2
+            },
+            {
+                question: "What is my biggest promise to you?",
+                options: ["To buy you more food", "To always be your protector", "To buy Your More Gold ", "To Change "],
+                correct: 1
+            }
+        ];
+
+        let currentQuizQuestion = 0;
+        let score = 0;
+        const quizContainer = document.getElementById('quizContainer');
+        const startQuizBtn = document.getElementById('startQuizBtn');
+
+        function initializeQuiz() {
+            startQuizBtn.addEventListener('click', startQuiz);
+        }
+
+        function startQuiz() {
+            startQuizBtn.style.display = 'none';
+            currentQuizQuestion = 0;
+            score = 0;
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const questionData = quizData[currentQuizQuestion];
+            quizContainer.innerHTML = `
+                <div class="quiz-question">${questionData.question}</div>
+                <div class="quiz-options">
+                    ${questionData.options.map((option, index) => `
+                        <div class="quiz-option" onclick="selectAnswer(this, ${index})">${option}</div>
+                    `).join('')}
+                </div>
+                <button id="quizNextBtn" style="display:none;">Next Question</button>
+            `;
+            document.getElementById('quizNextBtn').addEventListener('click', nextQuestion);
+        }
+
+        function selectAnswer(selectedOption, selectedIndex) {
+            const questionData = quizData[currentQuizQuestion];
+            const allOptions = document.querySelectorAll('.quiz-option');
+            const nextBtn = document.getElementById('quizNextBtn');
+
+            allOptions.forEach(option => option.classList.add('disabled'));
+
+            if (selectedIndex === questionData.correct) {
+                selectedOption.classList.add('correct');
+                score++;
+            } else {
+                selectedOption.classList.add('incorrect');
+                // Highlight the correct answer
+                allOptions[questionData.correct].classList.add('correct');
+            }
+            nextBtn.style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQuizQuestion++;
+            if (currentQuizQuestion < quizData.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            let resultMessage = '';
+            if (score === quizData.length) {
+                resultMessage = "ع المظبوط والله يبت يا توتو عشرة من عشرة ونجمه ليكي لا اي المياعه بتاعت تقي دي ... ياولدددد يا توتووووووووووووو";
+            } else if (score >= quizData.length / 2) {
+                resultMessage = "وحيات امك بجد يعني اي الاجابات الي شبة مراد دي";
+            } else {
+                resultMessage = "ماشاء الله ولا اجابه صح كدا انا اتطمنت عليكي ف ثانويه عامه♥ منك لله ";
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="quiz-result">
+                    You scored a <span class="score">${score}/${quizData.length}</span>
+                    <p>${resultMessage}</p>
+                </div>
+            `;
+            startQuizBtn.style.display = 'inline-block';
+            startQuizBtn.textContent = 'Play Again?';
+        }
+        // --- END: NEW QUIZ FEATURE SCRIPT ---
+        
+        function createRandomSparkle() {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y);
+        }
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+
+            const offsetX = (Math.random() - 0.5) * 40;
+            const offsetY = (Math.random() - 0.5) * 40;
+            sparkle.style.left = `${x + offsetX}px`;
+            sparkle.style.top = `${y + offsetY}px`;
+            
+            const size = Math.random() * 7 + 3;
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+
+            const duration = Math.random() * 1 + 0.5;
+            sparkle.style.animation = `sparkle-fade ${duration}s ease-out forwards`;
+
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, duration * 1000); 
+        }
+    </script>
+</body>
+</html>
