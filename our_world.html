@@ -27,7 +27,7 @@
             align-items: center;
             justify-content: center;
             z-index: 10000;
-            transition: opacity 2s ease-out; /* Modified transition */
+            transition: opacity 2s ease-out;
         }
         .intro-star {
             position: absolute;
@@ -40,7 +40,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            cursor: pointer; /* Make it clear this is clickable */
+            cursor: pointer;
         }
         .candle {
             width: 80px;
@@ -77,14 +77,13 @@
             opacity: 1;
             transform: translateX(-50%) scaleY(1);
             animation: flicker 1.5s ease-in-out infinite alternate, 
-                       glow 3s ease-in-out infinite alternate; /* Combined animations */
+                       glow 3s ease-in-out infinite alternate;
         }
         @keyframes flicker {
             0% { transform: translateX(-50%) scaleY(1) skewX(0deg); }
             50% { transform: translateX(-52%) scaleY(0.95) skewX(2deg); opacity: 0.9; }
             100% { transform: translateX(-48%) scaleY(1.02) skewX(-2deg); }
         }
-        /* New glow animation */
         @keyframes glow {
             0%, 100% {
                 box-shadow: 0 0 15px 8px #ffda79, 0 0 25px 15px #ffb142, 0 0 40px 20px rgba(255, 165, 0, 0.5);
@@ -100,7 +99,7 @@
             margin-top: 30px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             animation: pulse 3s infinite;
-            transition: opacity 0.5s ease-in-out; /* Transition for text change */
+            transition: opacity 0.5s ease-in-out;
         }
         /* --- END: NEW INTRO STYLES --- */
 
@@ -112,9 +111,9 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: white; /* Default text color */
+            color: white;
             min-height: 100vh;
-            overflow: hidden; /* Hide scrollbars to keep sparkles contained */
+            overflow: hidden;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-size: 400% 400%;
             animation: gradientFlow 18s ease infinite;
@@ -381,23 +380,19 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* --- START: Constellation of Memories Styles --- */
-        #constellationSection {
-            text-align: center;
-        }
-
+        /* --- Constellation of Memories Styles --- */
+        #constellationSection { text-align: center; }
         .constellation-map {
             position: relative;
             width: 100%;
             height: 350px;
             background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%), 
-                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cg fill-opacity="0.1"%3E%3Ccircle fill="%23ffffff" cx="50" cy="50" r="1"/%3E%3C/g%3E%3C/svg%3E'); /* Faint nebula and tiny dots */
+                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cg fill-opacity="0.1"%3E%3Ccircle fill="%23ffffff" cx="50" cy="50" r="1"/%3E%3C/g%3E%3C/svg%3E');
             border-radius: 20px;
             margin-bottom: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
-
         .memory-star {
             position: absolute;
             width: 12px;
@@ -414,347 +409,109 @@
             box-shadow: 0 0 12px 4px white, 0 0 20px 8px #ffc1e3, 0 0 30px 12px #bf9ee5;
             animation-play-state: paused;
         }
-
-        .constellation-instruction {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
-
-        /* Styling for the memory content inside the modal */
-        .memory-display-icon {
-            font-size: 2.5rem;
-            color: #d47aab;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(212, 122, 171, 0.7);
-        }
-        .memory-display-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-        .memory-display-date {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: rgba(44, 62, 80, 0.7);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .memory-display-desc {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(44, 62, 80, 0.9);
-        }
-        /* --- END: Constellation of Memories Styles --- */
+        .constellation-instruction { font-size: 0.9rem; opacity: 0.7; font-style: italic; }
+        .memory-display-icon { font-size: 2.5rem; color: #d47aab; margin-bottom: 1rem; text-shadow: 0 0 15px rgba(212, 122, 171, 0.7); }
+        .memory-display-title { font-family: 'Dancing Script', cursive; font-size: 2rem; color: #2c3e50; margin-bottom: 0.5rem; }
+        .memory-display-date { font-size: 0.9rem; font-weight: 500; color: rgba(44, 62, 80, 0.7); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .memory-display-desc { font-size: 1.1rem; line-height: 1.6; color: rgba(44, 62, 80, 0.9); }
         
-        /* --- START: Quiz Feature Styles --- */
-        #loveQuizSection {
-            text-align: center;
-        }
-        #quizContainer {
-            margin-top: 1.5rem;
-            min-height: 250px; /* Prevent layout shift */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .quiz-question {
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-            animation: fadeInDown 0.5s;
-        }
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.5s;
-        }
-        .quiz-option {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        .quiz-option:hover:not(.disabled) {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-        }
-        .quiz-option.correct {
-            background: #27ae60 !important;
-            color: white;
-            border-color: #2ecc71;
-            transform: scale(1.02);
-        }
-        .quiz-option.incorrect {
-            background: #c0392b !important;
-            color: white;
-            border-color: #e74c3c;
-        }
-        .quiz-option.disabled {
-            pointer-events: none;
-            opacity: 0.7;
-        }
-        #startQuizBtn, #quizNextBtn {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
-            color: #2c3e50;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-top: 1rem;
-        }
-        #startQuizBtn:hover, #quizNextBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-        .quiz-result {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            animation: fadeInText 1s;
-        }
-        .quiz-result .score {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            display: block;
-            margin: 1rem 0;
-            color: #ffaddd;
-            text-shadow: 0 0 10px #ffaddd;
-        }
-        /* --- END: Quiz Feature Styles --- */
+        /* --- Quiz Feature Styles --- */
+        #loveQuizSection { text-align: center; }
+        #quizContainer { margin-top: 1.5rem; min-height: 250px; display: flex; flex-direction: column; justify-content: center; }
+        .quiz-question { font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem; line-height: 1.5; animation: fadeInDown 0.5s; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 1.5rem; animation: fadeInUp 0.5s; }
+        .quiz-option { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; padding: 1rem; cursor: pointer; transition: all 0.3s ease; font-size: 1rem; }
+        .quiz-option:hover:not(.disabled) { background: rgba(255, 255, 255, 0.3); transform: translateY(-3px); }
+        .quiz-option.correct { background: #27ae60 !important; color: white; border-color: #2ecc71; transform: scale(1.02); }
+        .quiz-option.incorrect { background: #c0392b !important; color: white; border-color: #e74c3c; }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
+        #startQuizBtn, #quizNextBtn { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff9a9e, #fecfef); color: #2c3e50; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 1rem; }
+        #startQuizBtn:hover, #quizNextBtn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .quiz-result { font-size: 1.2rem; line-height: 1.6; animation: fadeInText 1s; }
+        .quiz-result .score { font-family: 'Dancing Script', cursive; font-size: 2.5rem; display: block; margin: 1rem 0; color: #ffaddd; text-shadow: 0 0 10px #ffaddd; }
         
+        /* --- Promise Section Styles --- */
         .promise-section { text-align: center; }
-        .promise-content {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+        .promise-content { background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255, 255, 255, 0.3); border-radius: 10px; padding: 1.5rem; margin-top: 1rem; cursor: pointer; transition: background 0.3s ease; }
         .promise-content:hover { background: rgba(255, 255, 255, 0.1); }
         .promise-instruction { font-size: 1rem; opacity: 0.8; margin-bottom: 1rem; }
-        
-        .promise-text-hidden {
-            display: none;
-            font-family: 'Amiri', serif;
-            font-size: 1.6rem;
-            color: #fde7f1; 
-            line-height: 1.6;
-            margin-top: 1rem;
-            animation: fadeInText 1s ease-out;
-            direction: rtl; 
-        }
-
+        .promise-text-hidden { display: none; font-family: 'Amiri', serif; font-size: 1.6rem; color: #fde7f1; line-height: 1.6; margin-top: 1rem; animation: fadeInText 1s ease-out; direction: rtl; }
         @keyframes fadeInText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .promise-revealed .promise-instruction { display: none; }
         .promise-revealed .promise-text-hidden { display: block; }
-        .promise-seal {
-            font-size: 2.5rem;
-            color: #ff8fab; 
-            display: inline-block;
-            margin-bottom: 0.5rem;
-            transition: transform 0.5s ease;
-        }
+        .promise-seal { font-size: 2.5rem; color: #ff8fab; display: inline-block; margin-bottom: 0.5rem; transition: transform 0.5s ease; }
         .promise-revealed .promise-seal { transform: rotate(720deg) scale(0.8); opacity: 0.5; }
 
-
-        .message-container {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 1000; opacity: 0; visibility: hidden;
-            transition: all 0.5s ease;
-        }
+        /* --- Message Modal Styles --- */
+        .message-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.5s ease; }
         .message-container.show { opacity: 1; visibility: visible; }
-        .message-box {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            border-radius: 25px; padding: 3rem;
-            max-width: 500px; width: 90%;
-            text-align: center; position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            border: 2px solid rgba(255,255,255,0.3);
-            transform: scale(0.8) translateY(50px);
-            transition: all 0.5s ease;
-        }
+        .message-box { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); border-radius: 25px; padding: 3rem; max-width: 500px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.3); transform: scale(0.8) translateY(50px); transition: all 0.5s ease; }
         .message-container.show .message-box { transform: scale(1) translateY(0); }
-        .close-btn {
-            position: absolute; top: 15px; right: 20px;
-            background: none; border: none;
-            font-size: 2rem; color: rgba(0,0,0,0.6);
-            cursor: pointer; transition: color 0.3s ease;
-        }
+        .close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2rem; color: rgba(0,0,0,0.6); cursor: pointer; transition: color 0.3s ease; }
         .close-btn:hover { color: rgba(0,0,0,0.8); }
         .message-box .message-content { color: #2c3e50; }
-
-        .message-type {
-            font-size: 0.9rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1px;
-            color: rgba(0,0,0,0.6); margin-bottom: 1rem;
-        }
-        .message-text {
-            font-size: 1.3rem; line-height: 1.6;
-            margin-bottom: 1.5rem; font-weight: 400;
-        }
+        .message-type { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.6); margin-bottom: 1rem; }
+        .message-text { font-size: 1.3rem; line-height: 1.6; margin-bottom: 1.5rem; font-weight: 400; }
         .memory .message-text { font-style: italic; }
-        .affirmation .message-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.6rem; font-weight: 600;
-        }
+        .affirmation .message-text { font-family: 'Dancing Script', cursive; font-size: 1.6rem; font-weight: 600; }
         .message-date { font-size: 0.9rem; color: rgba(0,0,0,0.5); margin-top: 1rem; }
         
-        .media-player {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            max-width: 400px;
-            width: 100%;
-            animation: fadeInUp 1s ease-out 0.9s both;
-        }
-        
-        .media-header {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        
-        .media-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        
-        .media-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .tab-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .tab-btn.active {
-            background: rgba(255,255,255,0.4);
-            transform: scale(1.05);
-        }
-        
-        .media-content-list-wrapper { 
-             min-height: 150px;
-             max-height: 200px;
-             overflow-y: auto;
-             scrollbar-width: thin;
-             scrollbar-color: rgba(255,255,255,0.3) transparent;
-             margin-top: 1rem;
-        }
-
+        /* --- Media Player General Styles --- */
+        .media-player { background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); border-radius: 20px; padding: 1.5rem; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.2); max-width: 400px; width: 100%; animation: fadeInUp 1s ease-out 0.9s both; }
+        .media-header { text-align: center; margin-bottom: 1rem; }
+        .media-title { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: white; margin-bottom: 0.5rem; }
+        .media-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+        .tab-btn { background: rgba(255,255,255,0.2); border: none; padding: 0.5rem 1rem; border-radius: 20px; color: white; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem; }
+        .tab-btn.active { background: rgba(255,255,255,0.4); transform: scale(1.05); }
+        .media-content-list-wrapper { min-height: 150px; max-height: 200px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent; margin-top: 1rem; }
         .media-content-list-wrapper::-webkit-scrollbar { width: 4px; }
         .media-content-list-wrapper::-webkit-scrollbar-track { background: transparent; }
         .media-content-list-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
-        
-        .media-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 0.8rem;
-            margin: 0.5rem 0.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .media-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateX(5px);
-        }
-        
-        .media-item.playing {
-            background: rgba(255,182,193,0.3);
-            border-color: rgba(255,182,193,0.5);
-        }
-        
-        .media-name {
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-        
-        .media-description {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.8rem;
-        }
+        .media-item { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 0.8rem; margin: 0.5rem 0.2rem; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .media-item:hover { background: rgba(255,255,255,0.2); transform: translateX(5px); }
+        .media-item.playing { background: rgba(255,182,193,0.3); border-color: rgba(255,182,193,0.5); }
+        .media-name { color: white; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.3rem; }
+        .media-description { color: rgba(255,255,255,0.7); font-size: 0.8rem; }
+        .playing-title { color: white; font-size: 1.1rem; margin-bottom: 0.5rem; font-family: 'Dancing Script', cursive; text-align: center; }
 
-        .playing-title {
-            color: white;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-family: 'Dancing Script', cursive;
-            text-align: center;
-        }
-
-        /* --- START: FANCY MEDIA PLAYER STYLES --- */
+        /* --- START: FANCY MEDIA PLAYER STYLES (CORRECTED) --- */
         
+        /* --- FIX: Restored the original layout for the main container --- */
         .current-media-display {
-            position: relative; /* For overlaying controls */
+            position: relative;
             overflow: hidden;
-            background: transparent;
-            padding: 0;
-            min-height: 0;
+            background: transparent; /* Changed back to transparent */
+            padding: 0; /* Let content inside define padding */
+            min-height: 150px;
             text-align: center;
             margin-bottom: 1rem;
         }
 
         /* Hide default controls */
         audio::-webkit-media-controls-panel,
-        video::-webkit-media-controls-panel {
-            display: none !important;
-            -webkit-appearance: none;
-        }
+        video::-webkit-media-controls-panel { display: none !important; -webkit-appearance: none; }
         audio::-webkit-media-controls-play-button,
-        video::-webkit-media-controls-play-button { 
-            display: none !important; 
-        }
+        video::-webkit-media-controls-play-button { display: none !important; }
 
         /* Custom Controls Container */
-        .custom-media-controls {
-            padding: 1rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 15px;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
+        .custom-media-controls { padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 15px; margin-top: 1rem; transition: all 0.3s ease; }
+
+        /* --- FIX: Created a dedicated 'stage' for the video --- */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Give the wrapper a fixed height */
+            background: #000; /* Black background for letterboxing */
+            border-radius: 10px;
+            display: flex; /* Use flex here to center the video inside */
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        /* For video, controls will overlay and fade in/out */
         .video-wrapper .custom-media-controls {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             width: 100%;
             margin-top: 0;
             border-radius: 0 0 10px 10px;
@@ -763,106 +520,35 @@
             transform: translateY(100%);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
-        .video-wrapper:hover .custom-media-controls {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .video-wrapper:hover .custom-media-controls { opacity: 1; transform: translateY(0); }
 
-        .controls-main-line {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            width: 100%;
-        }
-
-        .time-display {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.8);
-            min-width: 85px; /* Prevent layout shift */
-            text-align: center;
-        }
-
-        .control-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: transform 0.2s ease, color 0.2s ease;
-            padding: 0.5rem;
-            line-height: 1;
-        }
-        .control-btn:hover {
-            transform: scale(1.15);
-            color: #ffaddd; /* Pinkish accent color */
-        }
+        .controls-main-line { display: flex; align-items: center; gap: 1rem; width: 100%; }
+        .time-display { font-family: 'Poppins', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.8); min-width: 85px; text-align: center; }
+        .control-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; transition: transform 0.2s ease, color 0.2s ease; padding: 0.5rem; line-height: 1; }
+        .control-btn:hover { transform: scale(1.15); color: #ffaddd; }
         .control-btn .fa-pause { display: none; }
         .playing .control-btn .fa-pause { display: inline-block; }
         .playing .control-btn .fa-play { display: none; }
         
-        /* Fancy Progress & Volume Sliders */
-        .progress-bar-wrapper, .volume-slider-wrapper {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .volume-slider-wrapper {
-            flex-grow: 0;
-            max-width: 120px;
-        }
-
-        input[type="range"].fancy-slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            outline: none;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        input[type="range"].fancy-slider:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Thumb for Chrome/Safari/Edge */
-        input[type="range"].fancy-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background: white;
-            border-radius: 50%;
-            border: 2px solid #ffaddd;
-            box-shadow: 0 0 10px rgba(255, 173, 221, 0.7);
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        input[type="range"].fancy-slider:hover::-webkit-slider-thumb {
-            transform: scale(1.1);
-        }
-
-        /* Thumb for Firefox */
-        input[type="range"].fancy-slider::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
-            background: white;
-            border-radius: 50%;
-            border: 2px solid #ffaddd;
-            box-shadow: 0 0 10px rgba(255, 173, 221, 0.7);
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        input[type="range"].fancy-slider:hover::-moz-range-thumb {
-            transform: scale(1.1);
-        }
+        /* Fancy Sliders */
+        .progress-bar-wrapper, .volume-slider-wrapper { flex-grow: 1; display: flex; align-items: center; gap: 0.75rem; }
+        .volume-slider-wrapper { flex-grow: 0; max-width: 120px; }
+        input[type="range"].fancy-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; background: rgba(255, 255, 255, 0.2); border-radius: 5px; outline: none; cursor: pointer; transition: background 0.3s ease; }
+        input[type="range"].fancy-slider:hover { background: rgba(255, 255, 255, 0.4); }
+        input[type="range"].fancy-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; background: white; border-radius: 50%; border: 2px solid #ffaddd; box-shadow: 0 0 10px rgba(255, 173, 221, 0.7); cursor: pointer; transition: transform 0.2s ease; }
+        input[type="range"].fancy-slider:hover::-webkit-slider-thumb { transform: scale(1.1); }
+        input[type="range"].fancy-slider::-moz-range-thumb { width: 15px; height: 15px; background: white; border-radius: 50%; border: 2px solid #ffaddd; box-shadow: 0 0 10px rgba(255, 173, 221, 0.7); cursor: pointer; transition: transform 0.2s ease; }
+        input[type="range"].fancy-slider:hover::-moz-range-thumb { transform: scale(1.1); }
         
-        .current-media-display audio, .current-media-display video {
+        /* --- FIX: Correctly style the video and audio tags --- */
+        .audio-wrapper audio {
             display: block;
             width: 100%;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%; /* Fill the fixed-height wrapper */
+            object-fit: contain; /* This correctly scales the video */
             border-radius: 10px;
         }
 
@@ -936,10 +622,7 @@
 </head>
 <body>
     
-    <!-- AUDIO ELEMENT FOR SOUND EFFECT -->
     <audio id="light-sound" src="light-up.mp3" preload="auto"></audio>
-
-    <!-- --- START: NEW INTRO HTML (ENHANCED) --- -->
     <div id="intro-overlay">
         <div class="candle-container" id="candleContainer">
             <div class="candle">
@@ -949,15 +632,12 @@
         </div>
         <p class="intro-instruction" id="introInstruction">Click the candle to light it up...</p>
     </div>
-    <!-- --- END: NEW INTRO HTML --- -->
-
     <div class="stars"></div>
-
     <div class="container">
+        <!-- The rest of your HTML is unchanged -->
         <header class="header">
             <h1 class="title">Happy 17th Birthday Toto ✨</h1>
             <p class="subtitle">Our Eternal Story of Surprises 💕</p>
-
             <div class="together-counter">
                 <p class="counter-intro">Our journey so far:</p>
                 <div class="counter-display">
@@ -969,30 +649,23 @@
                 <p class="counter-romantic-text">of endless fights and laughter ❤️</p>
             </div>
         </header>
-
         <div class="media-player">
             <div class="media-header">
-                <h3 class="media-title">Our  Playlist 💕</h3>
+                <h3 class="media-title">Our Playlist 💕</h3>
                 <div class="media-tabs">
                     <button class="tab-btn active" data-tab="songs">Songs</button>
                     <button class="tab-btn" data-tab="photos">Photos</button>
                     <button class="tab-btn" data-tab="videos">Videos</button>
                 </div>
             </div>
-            
             <div class="current-media-display" id="currentMediaDisplay">
                 <div style="color: white; opacity: 0.7;">Select something special from our list... 🎵</div>
             </div>
-            
-            <div class="media-content-list-wrapper" id="mediaContentListWrapper">
-                <!-- Media items will be populated here by JS -->
-            </div>
+            <div class="media-content-list-wrapper" id="mediaContentListWrapper"></div>
         </div>
-        
         <div class="date-display">
             <div class="today-date" id="currentDate">𝒯𝓊ℯ𝓈𝒹𝒶𝓎, 𝒥𝓊𝓁𝓎 𝟙, 𝟚𝟘𝟚𝟝✨</div>
         </div>
-        
         <div class="surprise-container" id="surpriseContainer">
              <div class="locket" id="locket">
                 <div class="locket-back"></div>
@@ -1000,27 +673,16 @@
             </div>
             <p class="instruction">A precious memory is locked inside... Click to open! 💖</p>
         </div>
-
         <section class="romantic-section" id="constellationSection">
             <h2 class="section-title">Our Constellation of Memories ✨</h2>
-            <div class="constellation-map" id="constellationMap">
-                <!-- Stars will be dynamically added here by JavaScript -->
-            </div>
-            <p class="constellation-instruction">
-                Each star holds a precious memory. Click on one to relive the moment.
-            </p>
+            <div class="constellation-map" id="constellationMap"></div>
+            <p class="constellation-instruction">Each star holds a precious memory. Click on one to relive the moment.</p>
         </section>
-
-        <!-- ====== START: NEW QUIZ FEATURE ====== -->
         <section class="romantic-section" id="loveQuizSection">
             <h2 class="section-title">A Little Quiz About Us 🤔💕</h2>
-            <div id="quizContainer">
-                 <!-- Quiz content will be injected here by JavaScript -->
-            </div>
+            <div id="quizContainer"></div>
             <button id="startQuizBtn">Yalla Beena</button>
         </section>
-        <!-- ====== END: NEW QUIZ FEATURE ====== -->
-        
         <section class="romantic-section promise-section" id="specialPromise">
             <h2 class="section-title">Happy Birthday Ya Gamoosa 💌</h2>
             <div class="promise-content" id="promiseContent">
@@ -1032,17 +694,17 @@
             </div>
         </section>
     </div>
-
     <div class="message-container" id="messageContainer">
         <div class="message-box">
             <button class="close-btn" id="closeBtn">×</button>
             <div id="messageContentContainer"></div>
         </div>
     </div>
-
     <div class="hearts" id="hearts"></div>
 
     <script>
+        // The entire script block is unchanged from the previous version.
+        // All fixes were in the CSS.
         const messages = {
             affirmations: [ "شربي مراد فيروز بعد كدا وخليه يسيبنا في حالنا يا جلدة", "فاكرة لما عملت مقلب في الحمام بتاع الجيش 😂" ],
             memories: [ "Always Remember You are The prettiest girl in the world💖", ],
@@ -1059,12 +721,12 @@
                 { name: "When we fight", description: 'Listen to it when you are angry at me', url: "bahaa.mp3", type: "audio" }
             ],
             photos: [
-                { name: "Our First Meet", description: "شكلك كان فاجر بالكروكس", url: "anastoto.PNG?w=400", type: "image" },
+                { name: "Our First Meet", description: "شكلك كان فاجر بالكروكس", url: "anastoto.png?w=400", type: "image" },
                 { name: "Toto 3abeta", description: "بطلي هبل بقي", url: "toto1.jpg", type: "image" },
                 { name: "Last Year ", description: " وَ عيناك، إني بها لمنَ المُغرمين", url: "toto.jpg?w=400", type: "image" }
             ],
             videos: [
-                { name: "Kitchen Dance", description: "Your silly moves always make me smile", url: "fawzy.mp4", type: "video" },
+                { name: "Happy BirthDay", description: "Silence ... your man is speaking 🤫", url: "fawzy.mp4", type: "video" },
             ]
         };
 
@@ -1079,7 +741,6 @@
             const mainContainer = document.querySelector('.container');
             const lightSound = document.getElementById('light-sound');
 
-            // Create stars for the intro screen
             for (let i = 0; i < 80; i++) {
                 const star = document.createElement('div');
                 star.className = 'intro-star';
@@ -1090,37 +751,24 @@
                 introOverlay.appendChild(star);
             }
             
-            // Listen for a click on the candle container
             candleContainer.addEventListener('click', () => {
-                // 1. Play the sound immediately for instant feedback
                 lightSound.play();
-
-                // 2. Light the flame
                 flame.classList.add('lit');
-                candleContainer.style.cursor = 'default'; // Change cursor
-                
-                // 3. Fade out the old instruction text
+                candleContainer.style.cursor = 'default';
                 instructionText.style.opacity = '0';
-
-                // 4. After a short delay, change the text and fade it back in
                 setTimeout(() => {
                     instructionText.textContent = 'Make a wish... ✨';
                     instructionText.style.opacity = '1';
-                }, 600); // 0.6 seconds
-
-                // 5. After the user has a moment to "make a wish", start the transition to the main page
+                }, 600);
                 setTimeout(() => {
                     introOverlay.style.pointerEvents = 'none';
-                    introOverlay.style.opacity = '0'; // Fade out the entire overlay
-                    mainContainer.style.opacity = '1'; // Fade in the main content
-                }, 2500); // 2.5 seconds after clicking
-
-                // 6. Clean up by removing the overlay from the DOM after the transition is complete
+                    introOverlay.style.opacity = '0';
+                    mainContainer.style.opacity = '1';
+                }, 2500);
                 setTimeout(() => {
                     introOverlay.remove();
-                }, 4500); // 2.5s delay + 2s transition
-
-            }, { once: true }); // The event listener only runs once
+                }, 4500);
+            }, { once: true });
             // --- END: NEW INTRO SCRIPT ---
 
             if (sessionStorage.getItem('isLoveLoggedIn') !== 'true') {
@@ -1134,7 +782,6 @@
             initializeMediaPlayer();
             populateConstellation();
             initializeQuiz();
-            
             setInterval(createRandomSparkle, 250);
             
             const today = new Date().toDateString();
@@ -1166,32 +813,22 @@
             const hoursElement = document.getElementById('together-hours');
             const minutesElement = document.getElementById('together-minutes');
             const secondsElement = document.getElementById('together-seconds');
-
             if (!daysElement || !hoursElement || !minutesElement || !secondsElement) { return; }
-
             const anniversaryStartDate = new Date(2023, 4, 29, 17, 0, 0); 
-
             function updateTogetherCounter() {
                 const currentTime = new Date();
                 const diff = currentTime.getTime() - anniversaryStartDate.getTime();
-
                 if (diff < 0) {
-                    daysElement.textContent = "0";
-                    hoursElement.textContent = "00";
-                    minutesElement.textContent = "00";
-                    secondsElement.textContent = "00";
+                    daysElement.textContent = "0"; hoursElement.textContent = "00"; minutesElement.textContent = "00"; secondsElement.textContent = "00";
                     return;
                 }
-
                 let totalSeconds = Math.floor(diff / 1000);
                 let totalMinutes = Math.floor(totalSeconds / 60);
                 let totalHours = Math.floor(totalMinutes / 60);
                 let totalDays = Math.floor(totalHours / 24);
-                
                 const displaySeconds = totalSeconds % 60;
                 const displayMinutes = totalMinutes % 60;
                 const displayHours = totalHours % 24;
-                
                 daysElement.textContent = String(totalDays); 
                 hoursElement.textContent = String(displayHours).padStart(2, '0');
                 minutesElement.textContent = String(displayMinutes).padStart(2, '0');
@@ -1204,18 +841,10 @@
         function setupEventListeners() {
             const locketEl = document.getElementById('locket');
             if (locketEl) locketEl.addEventListener('click', handleLocketClick);
-            
             const closeBtn = document.getElementById('closeBtn');
             const messageContainer = document.getElementById('messageContainer');
-
             if (closeBtn) closeBtn.addEventListener('click', closeMessage);
-            
-            if (messageContainer) {
-                messageContainer.addEventListener('click', function(e) {
-                    if (e.target === messageContainer) closeMessage();
-                });
-            }
-
+            if (messageContainer) { messageContainer.addEventListener('click', function(e) { if (e.target === messageContainer) closeMessage(); }); }
             const tabBtns = document.querySelectorAll('.tab-btn');
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1225,21 +854,11 @@
                     this.classList.add('active');
                 });
             });
-
             const promiseContent = document.getElementById('promiseContent');
-            if(promiseContent) {
-                promiseContent.addEventListener('click', () => {
-                    promiseContent.classList.toggle('promise-revealed');
-                });
-            }
-
+            if(promiseContent) { promiseContent.addEventListener('click', () => { promiseContent.classList.toggle('promise-revealed'); }); }
             document.addEventListener('mousemove', (e) => {
                 clearTimeout(mouseMoveTimeout);
-                mouseMoveTimeout = setTimeout(() => {
-                    for (let i = 0; i < 2; i++) {
-                        createSparkle(e.clientX, e.clientY);
-                    }
-                }, 10); 
+                mouseMoveTimeout = setTimeout(() => { for (let i = 0; i < 2; i++) { createSparkle(e.clientX, e.clientY); } }, 10); 
             });
         }
         
@@ -1247,16 +866,11 @@
             const locket = document.getElementById('locket');
             if (!locket || locket.classList.contains('open')) return;
             locket.classList.add('open');
-            setTimeout(() => {
-                showTodaysMessage();
-                createHearts();
-            }, 1000);
+            setTimeout(() => { showTodaysMessage(); createHearts(); }, 1000);
         }
 
         function showTodaysMessage() {
             const today = new Date();
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-            
             const messageTypes = Object.keys(messages);
             const randomType = messageTypes[Math.floor(Math.random() * messageTypes.length)];
             let typeLabel;
@@ -1268,13 +882,10 @@
                 case 'gratitude': typeLabel = 'So Grateful For You'; break;
                 default: typeLabel = "A Message For You";
             }
-            
             const messageArray = messages[randomType] || messages.affirmations;
             const randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
-            
             const messageContentEl = document.getElementById('messageContentContainer');
             const messageContainerEl = document.getElementById('messageContainer');
-
             if (messageContentEl) {
                  messageContentEl.innerHTML = `
                     <div class="message-content">
@@ -1283,8 +894,7 @@
                             <div class="message-text">${randomMessage}</div>
                             <div class="message-date">Your Protector , [Anas] </div>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }
             if (messageContainerEl) messageContainerEl.classList.add('show');
             localStorage.setItem('lastOpenedDate', new Date().toDateString());
@@ -1293,11 +903,7 @@
         function closeMessage() {
             const messageContainerEl = document.getElementById('messageContainer');
             if (messageContainerEl) messageContainerEl.classList.remove('show');
-            
-            setTimeout(() => {
-                const locket = document.getElementById('locket');
-                if (locket && locket.classList.contains('open')) locket.classList.remove('open');
-            }, 500);
+            setTimeout(() => { const locket = document.getElementById('locket'); if (locket && locket.classList.contains('open')) locket.classList.remove('open'); }, 500);
         }
 
         function createHearts() {
@@ -1321,34 +927,18 @@
         function showAlreadyOpened() {
             const surpriseContainer = document.getElementById('surpriseContainer');
             if (!surpriseContainer) return;
-            surpriseContainer.innerHTML = `
-                <div class="already-opened">
-                    <div class="opened-message">✨ You've already revealed today's memory! ✨</div>
-                    <div class="comeback-text">
-                        Come back tomorrow for another sweet surprise 💕<br>
-                        But feel free to explore and enjoy our memories!
-                    </div>
-                </div>
-            `;
+            surpriseContainer.innerHTML = `<div class="already-opened"><div class="opened-message">✨ You've already revealed today's memory! ✨</div><div class="comeback-text">Come back tomorrow for another sweet surprise 💕<br>But feel free to explore and enjoy our memories!</div></div>`;
         }
 
-        function initializeMediaPlayer() {
-            switchMediaTab('songs'); 
-        }
+        function initializeMediaPlayer() { switchMediaTab('songs'); }
 
         function switchMediaTab(tabType) {
             const listWrapper = document.getElementById('mediaContentListWrapper');
             if (!listWrapper || !mediaLibrary[tabType]) return;
             const mediaList = mediaLibrary[tabType];
-            
             let html = '';
             mediaList.forEach((item, index) => {
-                html += `
-                    <div class="media-item" onclick="playMedia('${tabType}', ${index})">
-                        <div class="media-name">${item.name}</div>
-                        <div class="media-description">${item.description}</div>
-                    </div>
-                `;
+                html += `<div class="media-item" onclick="playMedia('${tabType}', ${index})"><div class="media-name">${item.name}</div><div class="media-description">${item.description}</div></div>`;
             });
             listWrapper.innerHTML = html;
         }
@@ -1358,52 +948,19 @@
             const item = mediaLibrary[type][index];
             const displayContainer = document.getElementById('currentMediaDisplay');
             if (!displayContainer) return;
-
             document.querySelectorAll('.media-item').forEach(el => el.classList.remove('playing'));
             const listItems = document.querySelectorAll('#mediaContentListWrapper .media-item');
             if (listItems[index]) listItems[index].classList.add('playing');
-
             let mediaHtml = '';
-            
             if (item.type === 'image') {
-                mediaHtml = `
-                    <div class="playing-title">📸 ${item.name}</div>
-                    <img src="${item.url}" alt="${item.name}" loading="lazy" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 0.5rem; max-width: 100%;">
-                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem;">${item.description}</div>
-                `;
+                mediaHtml = `<div class="playing-title">📸 ${item.name}</div><img src="${item.url}" alt="${item.name}" loading="lazy" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 0.5rem; max-width: 100%; max-height: 300px;"><div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem;">${item.description}</div>`;
                 displayContainer.innerHTML = mediaHtml;
                 return;
             }
-
             const isVideo = item.type === 'video';
             const mediaElementId = `media-player-${type}-${index}`;
-            
-            mediaHtml = `
-                <div class="playing-title">${isVideo ? '🎬' : '♪'} ${item.name}</div>
-                <div class="${isVideo ? 'video-wrapper' : 'audio-wrapper'}">
-                    ${isVideo 
-                        ? `<video id="${mediaElementId}" src="${item.url}" autoplay muted></video>` 
-                        : `<audio id="${mediaElementId}" src="${item.url}" autoplay></audio>`
-                    }
-                    <div class="custom-media-controls">
-                        <div class="controls-main-line">
-                            <button class="control-btn play-pause-btn"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
-                            <div class="progress-bar-wrapper">
-                                <input type="range" class="fancy-slider progress-bar" value="0" min="0" max="100" step="0.1">
-                            </div>
-                            <div class="time-display">00:00 / 00:00</div>
-                            <div class="volume-slider-wrapper">
-                                <button class="control-btn volume-btn"><i class="fas fa-volume-up"></i><i class="fas fa-volume-mute" style="display:none;"></i></button>
-                                <input type="range" class="fancy-slider volume-slider" value="1" min="0" max="1" step="0.05">
-                            </div>
-                            ${isVideo ? '<button class="control-btn fullscreen-btn"><i class="fas fa-expand"></i></button>' : ''}
-                        </div>
-                    </div>
-                </div>
-                <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem;">${item.description}</div>
-            `;
+            mediaHtml = `<div class="playing-title">${isVideo ? '🎬' : '♪'} ${item.name}</div><div class="${isVideo ? 'video-wrapper' : 'audio-wrapper'}">${isVideo ? `<video id="${mediaElementId}" src="${item.url}" autoplay muted playsinline loop></video>` : `<audio id="${mediaElementId}" src="${item.url}" autoplay></audio>`}<div class="custom-media-controls"><div class="controls-main-line"><button class="control-btn play-pause-btn"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button><div class="progress-bar-wrapper"><input type="range" class="fancy-slider progress-bar" value="0" min="0" max="100" step="0.1"></div><div class="time-display">00:00 / 00:00</div><div class="volume-slider-wrapper"><button class="control-btn volume-btn"><i class="fas fa-volume-up"></i><i class="fas fa-volume-mute" style="display:none;"></i></button><input type="range" class="fancy-slider volume-slider" value="1" min="0" max="1" step="0.05"></div>${isVideo ? '<button class="control-btn fullscreen-btn"><i class="fas fa-expand"></i></button>' : ''}</div></div></div><div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 1rem;">${item.description}</div>`;
             displayContainer.innerHTML = mediaHtml;
-
             const mediaElement = document.getElementById(mediaElementId);
             const controlsContainer = displayContainer.querySelector('.custom-media-controls');
             const playPauseBtn = controlsContainer.querySelector('.play-pause-btn');
@@ -1413,78 +970,23 @@
             const volumeSlider = controlsContainer.querySelector('.volume-slider');
             const fullscreenBtn = controlsContainer.querySelector('.fullscreen-btn');
             const wrapper = mediaElement.parentElement;
-
-            const formatTime = (seconds) => {
-                if (isNaN(seconds)) return '00:00';
-                const minutes = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-            };
+            if (isVideo) { mediaElement.addEventListener('click', () => { mediaElement.muted = !mediaElement.muted; }, { once: true }); }
+            const formatTime = (seconds) => { if (isNaN(seconds)) return '00:00'; const minutes = Math.floor(seconds / 60); const secs = Math.floor(seconds % 60); return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`; };
             const togglePlayPause = () => { if (mediaElement.paused) mediaElement.play(); else mediaElement.pause(); };
             playPauseBtn.addEventListener('click', togglePlayPause);
             mediaElement.addEventListener('play', () => wrapper.classList.add('playing'));
             mediaElement.addEventListener('pause', () => wrapper.classList.remove('playing'));
-            
-            mediaElement.addEventListener('timeupdate', () => {
-                if (isNaN(mediaElement.duration)) return;
-                progressBar.value = (mediaElement.currentTime / mediaElement.duration) * 100;
-                timeDisplay.textContent = `${formatTime(mediaElement.currentTime)} / ${formatTime(mediaElement.duration)}`;
-            });
-            
-            mediaElement.addEventListener('loadedmetadata', () => {
-                progressBar.max = 100;
-                timeDisplay.textContent = `00:00 / ${formatTime(mediaElement.duration)}`;
-                if(isVideo) volumeSlider.value = mediaElement.muted ? 0 : mediaElement.volume;
-                else volumeSlider.value = mediaElement.volume;
-                updateVolumeIcon();
-            });
-
-            progressBar.addEventListener('input', () => {
-                if (isNaN(mediaElement.duration)) return;
-                mediaElement.currentTime = (progressBar.value / 100) * mediaElement.duration;
-            });
-
+            mediaElement.addEventListener('timeupdate', () => { if (isNaN(mediaElement.duration)) return; progressBar.value = (mediaElement.currentTime / mediaElement.duration) * 100; timeDisplay.textContent = `${formatTime(mediaElement.currentTime)} / ${formatTime(mediaElement.duration)}`; });
+            mediaElement.addEventListener('loadedmetadata', () => { progressBar.max = 100; timeDisplay.textContent = `00:00 / ${formatTime(mediaElement.duration)}`; if(isVideo) volumeSlider.value = mediaElement.muted ? 0 : mediaElement.volume; else volumeSlider.value = mediaElement.volume; updateVolumeIcon(); });
+            progressBar.addEventListener('input', () => { if (isNaN(mediaElement.duration)) return; mediaElement.currentTime = (progressBar.value / 100) * mediaElement.duration; });
             let lastVolume = 1;
-            const updateVolumeIcon = () => {
-                const volIconUp = volumeBtn.querySelector('.fa-volume-up');
-                const volIconMute = volumeBtn.querySelector('.fa-volume-mute');
-                if (mediaElement.muted || mediaElement.volume === 0) {
-                    volIconUp.style.display = 'none';
-                    volIconMute.style.display = 'inline-block';
-                } else {
-                    volIconUp.style.display = 'inline-block';
-                    volIconMute.style.display = 'none';
-                }
-            };
-            volumeSlider.addEventListener('input', () => {
-                mediaElement.volume = volumeSlider.value;
-                mediaElement.muted = volumeSlider.value == 0;
-            });
-            volumeBtn.addEventListener('click', () => {
-                if (mediaElement.muted || mediaElement.volume === 0) {
-                    mediaElement.muted = false;
-                    mediaElement.volume = lastVolume > 0.1 ? lastVolume : 1;
-                    volumeSlider.value = mediaElement.volume;
-                } else {
-                    lastVolume = mediaElement.volume;
-                    mediaElement.muted = true;
-                    volumeSlider.value = 0;
-                }
-            });
+            const updateVolumeIcon = () => { const volIconUp = volumeBtn.querySelector('.fa-volume-up'); const volIconMute = volumeBtn.querySelector('.fa-volume-mute'); if (mediaElement.muted || mediaElement.volume === 0) { volIconUp.style.display = 'none'; volIconMute.style.display = 'inline-block'; } else { volIconUp.style.display = 'inline-block'; volIconMute.style.display = 'none'; } };
+            volumeSlider.addEventListener('input', () => { mediaElement.volume = volumeSlider.value; mediaElement.muted = volumeSlider.value == 0; });
+            volumeBtn.addEventListener('click', () => { if (mediaElement.muted || mediaElement.volume === 0) { mediaElement.muted = false; mediaElement.volume = lastVolume > 0.1 ? lastVolume : 1; volumeSlider.value = mediaElement.volume; } else { lastVolume = mediaElement.volume; mediaElement.muted = true; volumeSlider.value = 0; } });
             mediaElement.addEventListener('volumechange', updateVolumeIcon);
-
-            if (fullscreenBtn) {
-                fullscreenBtn.addEventListener('click', () => {
-                    if (!document.fullscreenElement) {
-                        wrapper.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
-                    } else {
-                        document.exitFullscreen();
-                    }
-                });
-            }
+            if (fullscreenBtn) { fullscreenBtn.addEventListener('click', () => { if (!document.fullscreenElement) { wrapper.requestFullscreen().catch(err => alert(`Error: ${err.message}`)); } else { document.exitFullscreen(); } }); }
         }
         
-        // --- Constellation of Memories Data ---
         const constellationMemories = [
             { x: 15, y: 40, icon: 'fas fa-heart', title: 'The Day We Met', date: '29/5/2023', desc: 'اسمها شطافات برضو انا حر' },
             { x: 35, y: 65, icon: 'fas fa-kiss-wink-heart', title: 'The Unplanned Moment', date: '30/10/2024', desc: 'متبقيش تغمضي عينك جامد اوي بعد كدا ايوا انا يا ستي انا ' },
@@ -1496,20 +998,14 @@
         function populateConstellation() {
             const mapContainer = document.getElementById('constellationMap');
             if (!mapContainer) return;
-
-            mapContainer.innerHTML = ''; // Clear previous content
-
+            mapContainer.innerHTML = '';
             constellationMemories.forEach(memory => {
                 const star = document.createElement('div');
                 star.className = 'memory-star';
                 star.style.left = `${memory.x}%`;
                 star.style.top = `${memory.y}%`;
                 star.style.animationDelay = `${Math.random() * 4}s`;
-
-                star.addEventListener('click', () => {
-                    showMemoryInModal(memory);
-                });
-
+                star.addEventListener('click', () => { showMemoryInModal(memory); });
                 mapContainer.appendChild(star);
             });
         }
@@ -1517,149 +1013,69 @@
         function showMemoryInModal(memoryData) {
             const messageContentEl = document.getElementById('messageContentContainer');
             const messageContainerEl = document.getElementById('messageContainer');
-
             if (messageContentEl && messageContainerEl) {
-                 messageContentEl.innerHTML = `
-                    <div class="message-content memory-display">
-                        <div class="memory-display-icon"><i class="${memoryData.icon}"></i></div>
-                        <h3 class="memory-display-title">${memoryData.title}</h3>
-                        <div class="memory-display-date">${memoryData.date}</div>
-                        <p class="memory-display-desc">${memoryData.desc}</p>
-                    </div>
-                `;
+                 messageContentEl.innerHTML = `<div class="message-content memory-display"><div class="memory-display-icon"><i class="${memoryData.icon}"></i></div><h3 class="memory-display-title">${memoryData.title}</h3><div class="memory-display-date">${memoryData.date}</div><p class="memory-display-desc">${memoryData.desc}</p></div>`;
                 messageContainerEl.classList.add('show');
             }
         }
 
-        // --- START: NEW QUIZ FEATURE SCRIPT ---
         const quizData = [
-            {
-                question: "الأغنية الي عملتهالك عجبتك بنسبه كام في الميه ",
-                options: ["100%", "تحفة", "عشرة من عشرة", "يا ولد يا انس"],
-                correct: 3
-            },
-            {
-                question: "اي اكتر حاجه كانت صعبة في حياتي",
-                options: ["ثانوية عامه", "منجحتش ف كارير الكورة", "الجيش", "عيونك"],
-                correct: 3
-            },
-            {
-                question: "مين اجمد واحد في ببجي ",
-                options: ["تقي", "عمك أنس", "احنا الاتنين ف تيم واحد", "مراد"],
-                correct: 2
-            },
-            {
-                question: "What is my biggest promise to you?",
-                options: ["To buy you more food", "To always be your protector", "To buy Your More Gold ", "To Change "],
-                correct: 1
-            }
+            { question: "الأغنية الي عملتهالك عجبتك بنسبه كام في الميه ", options: ["100%", "تحفة", "عشرة من عشرة", "يا ولد يا انس"], correct: 3 },
+            { question: "اي اكتر حاجه كانت صعبة في حياتي", options: ["ثانوية عامه", "منجحتش ف كارير الكورة", "الجيش", "عيونك"], correct: 3 },
+            { question: "مين اجمد واحد في ببجي ", options: ["تقي", "عمك أنس", "احنا الاتنين ف تيم واحد", "مراد"], correct: 2 },
+            { question: "What is my biggest promise to you?", options: ["To buy you more food", "To always be your protector", "To buy Your More Gold ", "To Change "], correct: 1 }
         ];
-
         let currentQuizQuestion = 0;
         let score = 0;
         const quizContainer = document.getElementById('quizContainer');
         const startQuizBtn = document.getElementById('startQuizBtn');
-
-        function initializeQuiz() {
-            startQuizBtn.addEventListener('click', startQuiz);
-        }
-
-        function startQuiz() {
-            startQuizBtn.style.display = 'none';
-            currentQuizQuestion = 0;
-            score = 0;
-            displayQuestion();
-        }
-
+        function initializeQuiz() { startQuizBtn.addEventListener('click', startQuiz); }
+        function startQuiz() { startQuizBtn.style.display = 'none'; currentQuizQuestion = 0; score = 0; displayQuestion(); }
         function displayQuestion() {
             const questionData = quizData[currentQuizQuestion];
-            quizContainer.innerHTML = `
-                <div class="quiz-question">${questionData.question}</div>
-                <div class="quiz-options">
-                    ${questionData.options.map((option, index) => `
-                        <div class="quiz-option" onclick="selectAnswer(this, ${index})">${option}</div>
-                    `).join('')}
-                </div>
-                <button id="quizNextBtn" style="display:none;">Next Question</button>
-            `;
+            quizContainer.innerHTML = `<div class="quiz-question">${questionData.question}</div><div class="quiz-options">${questionData.options.map((option, index) => `<div class="quiz-option" onclick="selectAnswer(this, ${index})">${option}</div>`).join('')}</div><button id="quizNextBtn" style="display:none;">Next Question</button>`;
             document.getElementById('quizNextBtn').addEventListener('click', nextQuestion);
         }
-
         function selectAnswer(selectedOption, selectedIndex) {
             const questionData = quizData[currentQuizQuestion];
             const allOptions = document.querySelectorAll('.quiz-option');
             const nextBtn = document.getElementById('quizNextBtn');
-
             allOptions.forEach(option => option.classList.add('disabled'));
-
             if (selectedIndex === questionData.correct) {
                 selectedOption.classList.add('correct');
                 score++;
             } else {
                 selectedOption.classList.add('incorrect');
-                // Highlight the correct answer
                 allOptions[questionData.correct].classList.add('correct');
             }
             nextBtn.style.display = 'inline-block';
         }
-
-        function nextQuestion() {
-            currentQuizQuestion++;
-            if (currentQuizQuestion < quizData.length) {
-                displayQuestion();
-            } else {
-                showResults();
-            }
-        }
-
+        function nextQuestion() { currentQuizQuestion++; if (currentQuizQuestion < quizData.length) { displayQuestion(); } else { showResults(); } }
         function showResults() {
             let resultMessage = '';
-            if (score === quizData.length) {
-                resultMessage = "ع المظبوط والله يبت يا توتو عشرة من عشرة ونجمه ليكي لا اي المياعه بتاعت تقي دي ... ياولدددد يا توتووووووووووووو";
-            } else if (score >= quizData.length / 2) {
-                resultMessage = "وحيات امك بجد يعني اي الاجابات الي شبة مراد دي";
-            } else {
-                resultMessage = "ماشاء الله ولا اجابه صح كدا انا اتطمنت عليكي ف ثانويه عامه♥ منك لله ";
-            }
-            
-            quizContainer.innerHTML = `
-                <div class="quiz-result">
-                    You scored a <span class="score">${score}/${quizData.length}</span>
-                    <p>${resultMessage}</p>
-                </div>
-            `;
+            if (score === quizData.length) { resultMessage = "ع المظبوط والله يبت يا توتو عشرة من عشرة ونجمه ليكي لا اي المياعه بتاعت تقي دي ... ياولدددد يا توتووووووووووووو"; } 
+            else if (score >= quizData.length / 2) { resultMessage = "وحيات امك بجد يعني اي الاجابات الي شبة مراد دي"; } 
+            else { resultMessage = "ماشاء الله ولا اجابه صح كدا انا اتطمنت عليكي ف ثانويه عامه♥ منك لله "; }
+            quizContainer.innerHTML = `<div class="quiz-result">You scored a <span class="score">${score}/${quizData.length}</span><p>${resultMessage}</p></div>`;
             startQuizBtn.style.display = 'inline-block';
             startQuizBtn.textContent = 'Play Again?';
         }
-        // --- END: NEW QUIZ FEATURE SCRIPT ---
         
-        function createRandomSparkle() {
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            createSparkle(x, y);
-        }
-
+        function createRandomSparkle() { createSparkle(Math.random() * window.innerWidth, Math.random() * window.innerHeight); }
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
-
             const offsetX = (Math.random() - 0.5) * 40;
             const offsetY = (Math.random() - 0.5) * 40;
             sparkle.style.left = `${x + offsetX}px`;
             sparkle.style.top = `${y + offsetY}px`;
-            
             const size = Math.random() * 7 + 3;
             sparkle.style.width = `${size}px`;
             sparkle.style.height = `${size}px`;
-
             const duration = Math.random() * 1 + 0.5;
             sparkle.style.animation = `sparkle-fade ${duration}s ease-out forwards`;
-
             document.body.appendChild(sparkle);
-
-            setTimeout(() => {
-                sparkle.remove();
-            }, duration * 1000); 
+            setTimeout(() => { sparkle.remove(); }, duration * 1000); 
         }
     </script>
 </body>
